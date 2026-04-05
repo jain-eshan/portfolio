@@ -20,24 +20,23 @@
               "icon": "lucide-file",
               "title": "Welcome"
             }
-          }
-        ]
-      },
-      {
-        "id": "0ef23c8850c38a1c",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "a7d0e6502ca0b1c3",
+            "id": "448e98b1d5f9ee9b",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Test Formatter.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Test Formatter"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -210,8 +209,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "289a1375b52675e3",
+  "active": "448e98b1d5f9ee9b",
   "lastOpenFiles": [
-    "Welcome.md"
+    "Welcome.md",
+    "Test Formatter.md"
   ]
 }
