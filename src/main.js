@@ -1,5 +1,6 @@
 import './styles/index.css';
 import { initDraggables, resetAllDraggables } from './lib/draggable.js';
+import { initWritings } from './lib/writings.js';
 
 /* ============================================================
    Live clock (Delhi time)
@@ -172,6 +173,11 @@ function closeDrawer() {
     linksDrawer.setAttribute('aria-hidden', 'true');
   }
 }
+/* ============================================================
+   Writings (homepage list + post drawer)
+   ============================================================ */
+initWritings();
+
 if (linksTrigger) linksTrigger.addEventListener('click', openDrawer);
 if (linksClose) linksClose.addEventListener('click', closeDrawer);
 if (linksBackdrop) linksBackdrop.addEventListener('click', closeDrawer);

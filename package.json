@@ -5,8 +5,9 @@
   "description": "Personal portfolio for Eshan Jain — Product Manager, designer & builder.",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3000",
-    "build": "vite build",
+    "posts": "node scripts/build-posts.js",
+    "dev": "node scripts/build-posts.js && vite --port 3000",
+    "build": "node scripts/build-posts.js && vite build",
     "preview": "vite preview --port 4173"
   },
   "author": "Eshan Jain",
@@ -16,5 +17,8 @@
   },
   "devDependencies": {
     "vite": "^8.0.3"
+  },
+  "dependencies": {
+    "marked": "^17.0.6"
   }
 }
