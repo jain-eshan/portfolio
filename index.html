@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="description" content="Eshan Jain — Product Manager, Designer & Builder. Co-founder of Fitin Club. ISB YLP." />
   <meta name="author" content="Eshan Jain" />
+  <meta name="theme-color" content="#f5f5f4" />
   <meta property="og:title" content="Eshan Jain | Product Manager, Designer, Builder" />
   <meta property="og:description" content="Product Manager, Designer & Builder. Co-founder Fitin Club." />
   <meta property="og:url" content="https://eshanjain.in" />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✳️%3C/text%3E%3C/svg%3E" />
   <title>Eshan Jain | Product Manager, Designer, Builder</title>
 
@@ -34,24 +36,25 @@
   <link rel="stylesheet" href="/src/styles/index.css" />
 </head>
 <body>
-  <!-- FigJam canvas grid background -->
-  <div class="canvas-grid" aria-hidden="true"></div>
+  <!-- FigJam dot-grid background (pure decoration, behind everything) -->
+  <div class="canvas-dots" aria-hidden="true"></div>
+  <div class="canvas-vignette" aria-hidden="true"></div>
 
   <!-- Floating collaboration cursors -->
   <div class="cursor-float cursor-float--1" aria-hidden="true">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
       <path d="M2 2L18 9L10 11L7 18L2 2Z" fill="#8b5cf6" stroke="#fff" stroke-width="1.2"/>
     </svg>
     <span class="cursor-tag" style="background:#8b5cf6">Ishu</span>
   </div>
   <div class="cursor-float cursor-float--2" aria-hidden="true">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
       <path d="M2 2L18 9L10 11L7 18L2 2Z" fill="#3b82f6" stroke="#fff" stroke-width="1.2"/>
     </svg>
     <span class="cursor-tag" style="background:#3b82f6">You</span>
   </div>
   <div class="cursor-float cursor-float--3" aria-hidden="true">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
       <path d="M2 2L18 9L10 11L7 18L2 2Z" fill="#10b981" stroke="#fff" stroke-width="1.2"/>
     </svg>
     <span class="cursor-tag" style="background:#10b981">Prof</span>
@@ -61,6 +64,10 @@
   <div class="top-info">
     <p class="top-info__line"><span id="location">DELHI</span> <span id="clock">—</span> · <span id="date">—</span></p>
     <p class="top-info__line">28°C <span class="top-info__icon">☀︎</span></p>
+    <button class="top-info__reset" id="reset-layout" title="Reset draggable positions" aria-label="Reset layout">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+      Reset layout
+    </button>
   </div>
 
   <!-- Top-right: Collaboration badge -->
@@ -78,13 +85,53 @@
   <main>
     <!-- ═══════════════════ HERO ═══════════════════ -->
     <section class="hero">
+      <!-- 3D element (Spline if loaded, CSS cube fallback otherwise) -->
+      <div class="hero__3d" id="hero3d" aria-hidden="true">
+        <div class="hero__3d-fallback">
+          <div class="css-cube">
+            <div class="css-cube__face css-cube__face--front"></div>
+            <div class="css-cube__face css-cube__face--back"></div>
+            <div class="css-cube__face css-cube__face--right"></div>
+            <div class="css-cube__face css-cube__face--left"></div>
+            <div class="css-cube__face css-cube__face--top"></div>
+            <div class="css-cube__face css-cube__face--bottom"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 draggable stickers scattered around hero -->
+      <div class="sticker sticker--1" data-drag data-drag-id="sticker-star" aria-label="Draggable star">
+        <svg width="54" height="54" viewBox="0 0 60 60" fill="none">
+          <path d="M30 4 L36 24 L56 30 L36 36 L30 56 L24 36 L4 30 L24 24 Z" fill="#facc15" stroke="#0f172a" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="sticker sticker--2" data-drag data-drag-id="sticker-hi" aria-label="Draggable hi sticker">
+        <div class="sticker__note">hi ✌️</div>
+      </div>
+      <div class="sticker sticker--3" data-drag data-drag-id="sticker-arrow" aria-label="Draggable arrow">
+        <svg width="76" height="50" viewBox="0 0 80 50" fill="none">
+          <path d="M5 25 Q 30 5, 60 25 T 75 25" stroke="#0f172a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M68 18 L75 25 L68 32" stroke="#0f172a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="sticker sticker--4" data-drag data-drag-id="sticker-heart" aria-label="Draggable heart">
+        <svg width="46" height="44" viewBox="0 0 48 44" fill="none">
+          <path d="M24 40 C 4 28, 4 10, 14 6 C 20 4, 24 10, 24 14 C 24 10, 28 4, 34 6 C 44 10, 44 28, 24 40 Z" fill="#ef4444" stroke="#0f172a" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
       <div class="hero__inner">
         <div class="hero__name-block">
-          <h1 class="hero__name hero__name--line1">ESHAN</h1>
-          <h1 class="hero__name hero__name--pixel">JAIN</h1>
+          <h1 class="hero__name hero__name--line1" aria-label="Eshan">
+            <span class="letter-tile" data-drag data-drag-id="e-1">E</span><span class="letter-tile" data-drag data-drag-id="e-2">S</span><span class="letter-tile" data-drag data-drag-id="e-3">H</span><span class="letter-tile" data-drag data-drag-id="e-4">A</span><span class="letter-tile" data-drag data-drag-id="e-5">N</span>
+          </h1>
+          <h1 class="hero__name hero__name--line2" aria-label="Jain">
+            <span class="letter-tile letter-tile--alt" data-drag data-drag-id="j-1">J</span><span class="letter-tile letter-tile--alt" data-drag data-drag-id="j-2">A</span><span class="letter-tile letter-tile--alt" data-drag data-drag-id="j-3">I</span><span class="letter-tile letter-tile--alt" data-drag data-drag-id="j-4">N</span>
+          </h1>
         </div>
         <div class="hero__bio">
           <p>Product Manager, designer &amp; builder. 4+ years shipping products across health-tech, fintech, and early-stage startups. Co-founder at <em>Fitin Club</em>. Currently at <em>Visit Health</em>, incoming <em>ISB YLP</em>.</p>
+          <p class="hero__bio-hint">✳ Try dragging the letters and stickers — everything remembers its spot.</p>
         </div>
       </div>
       <div class="hero__cta">
@@ -152,7 +199,7 @@
         </div>
         <div class="section__content">
           <div class="expertise-grid">
-            <div class="expertise-card" data-reveal>
+            <div class="expertise-card" data-reveal data-tilt>
               <div class="expertise-card__icon">
                 <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                   <circle cx="30" cy="30" r="20"/>
@@ -162,7 +209,7 @@
               <h3>Product Strategy</h3>
               <p>I turn fuzzy inputs into clear product direction, smart experiments, and shippable increments.</p>
             </div>
-            <div class="expertise-card" data-reveal>
+            <div class="expertise-card" data-reveal data-tilt>
               <div class="expertise-card__icon">
                 <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                   <rect x="12" y="12" width="36" height="36" rx="2"/>
@@ -172,7 +219,7 @@
               <h3>Design &amp; UX</h3>
               <p>I craft simple flows and crisp UI, balancing usability, accessibility, and visual polish.</p>
             </div>
-            <div class="expertise-card" data-reveal>
+            <div class="expertise-card" data-reveal data-tilt>
               <div class="expertise-card__icon">
                 <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                   <ellipse cx="30" cy="20" rx="18" ry="5"/>
@@ -184,7 +231,7 @@
               <h3>Vibe Coding</h3>
               <p>I use AI-assisted building to explore, validate, and iterate quickly without sacrificing taste.</p>
             </div>
-            <div class="expertise-card" data-reveal>
+            <div class="expertise-card" data-reveal data-tilt>
               <div class="expertise-card__icon">
                 <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                   <path d="M12 48 L12 12 L48 12 L48 48 L12 48 Z"/>

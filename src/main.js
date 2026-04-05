@@ -1,11 +1,13 @@
 import './styles/index.css';
+import { initDraggables, resetAllDraggables } from './lib/draggable.js';
+import { initTilts } from './lib/tilt.js';
+import { loadSplineHero } from './lib/spline.js';
 
 /* ============================================================
    Live clock (Delhi time)
    ============================================================ */
 const clockEl = document.getElementById('clock');
 const dateEl = document.getElementById('date');
-
 function updateClock() {
   const now = new Date();
   const options = { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'Asia/Kolkata' };
@@ -25,7 +27,6 @@ if ('IntersectionObserver' in window) {
     (entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          // Stagger items within the same parent for a cascade feel
           const delay = (i % 5) * 60;
           setTimeout(() => entry.target.classList.add('is-visible'), delay);
           io.unobserve(entry.target);
@@ -40,7 +41,7 @@ if ('IntersectionObserver' in window) {
 }
 
 /* ============================================================
-   Smooth anchor scroll with easing
+   Smooth anchor scroll
    ============================================================ */
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener('click', (e) => {
@@ -56,10 +57,37 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 });
 
 /* ============================================================
-   Subtle parallax on floating cursors based on mouse
+   Draggable letters + stickers (desktop/tablet only)
+   ============================================================ */
+const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+const isDesktop = window.matchMedia('(min-width: 901px)').matches;
+if (isFinePointer && isDesktop && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  initDraggables('[data-drag]');
+}
+
+/* ============================================================
+   3D hover tilt on expertise cards
+   ============================================================ */
+if (isFinePointer && isDesktop) {
+  initTilts('[data-tilt]');
+}
+
+/* ============================================================
+   Reset layout button
+   ============================================================ */
+const resetBtn = document.getElementById('reset-layout');
+if (resetBtn) {
+  resetBtn.addEventListener('click', () => {
+    resetAllDraggables();
+  });
+}
+
+/* ============================================================
+   Parallax on floating cursors + dot grid based on mouse
    ============================================================ */
 const cursors = document.querySelectorAll('.cursor-float');
-if (cursors.length && window.matchMedia('(pointer: fine)').matches) {
+const dotGrid = document.querySelector('.canvas-dots');
+if ((cursors.length || dotGrid) && isFinePointer) {
   let rafId = null;
   let tx = 0, ty = 0;
   window.addEventListener('mousemove', (e) => {
@@ -72,8 +100,16 @@ if (cursors.length && window.matchMedia('(pointer: fine)').matches) {
           c.style.setProperty('--mx', `${tx * factor}px`);
           c.style.setProperty('--my', `${ty * factor}px`);
         });
+        if (dotGrid) {
+          dotGrid.style.transform = `translate3d(${tx * 0.5}px, ${ty * 0.5}px, 0)`;
+        }
         rafId = null;
       });
     }
   });
 }
+
+/* ============================================================
+   Spline 3D hero (progressive enhancement on desktop only)
+   ============================================================ */
+loadSplineHero('hero3d');
