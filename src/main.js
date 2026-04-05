@@ -1,7 +1,5 @@
 import './styles/index.css';
 import { initDraggables, resetAllDraggables } from './lib/draggable.js';
-import { initTilts } from './lib/tilt.js';
-import { loadSplineHero } from './lib/spline.js';
 
 /* ============================================================
    Live clock (Delhi time)
@@ -57,19 +55,51 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 });
 
 /* ============================================================
-   Draggable letters + stickers (desktop/tablet only)
+   Breakpoints + draggable init (desktop only)
    ============================================================ */
 const isFinePointer = window.matchMedia('(pointer: fine)').matches;
 const isDesktop = window.matchMedia('(min-width: 901px)').matches;
-if (isFinePointer && isDesktop && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canDrag = isFinePointer && isDesktop && !reducedMotion;
+
+if (canDrag) {
+  // Initialize drag handlers on all [data-drag] elements.
+  // Drag is gated inside draggable.js by body.is-collab-on — handlers are attached
+  // but will bail on pointerdown unless collab is ON.
   initDraggables('[data-drag]');
 }
 
 /* ============================================================
-   3D hover tilt on expertise cards
+   Collaboration toggle — default OFF, persists for session
    ============================================================ */
-if (isFinePointer && isDesktop) {
-  initTilts('[data-tilt]');
+const COLLAB_KEY = 'ej.collab.v1';
+const collabBtn = document.getElementById('collab-toggle');
+const collabLabel = collabBtn?.querySelector('.top-badge__label');
+
+function setCollab(on) {
+  document.body.classList.toggle('is-collab-on', on);
+  if (collabBtn) collabBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  if (collabLabel) collabLabel.textContent = on ? 'Collaboration on' : 'Collaboration off';
+  try { sessionStorage.setItem(COLLAB_KEY, on ? '1' : '0'); } catch {}
+}
+
+// Restore from session (default OFF if nothing stored)
+try {
+  const stored = sessionStorage.getItem(COLLAB_KEY);
+  setCollab(stored === '1');
+} catch {
+  setCollab(false);
+}
+
+if (collabBtn && canDrag) {
+  collabBtn.addEventListener('click', () => {
+    const next = !document.body.classList.contains('is-collab-on');
+    setCollab(next);
+  });
+} else if (collabBtn && !canDrag) {
+  // On mobile / reduced-motion: button is decorative, stays OFF
+  collabBtn.disabled = true;
+  collabBtn.style.opacity = '0.55';
 }
 
 /* ============================================================
@@ -83,25 +113,38 @@ if (resetBtn) {
 }
 
 /* ============================================================
-   Parallax on floating cursors + dot grid based on mouse
+   Mouse-bound "You" cursor + Eshan cursor parallax
    ============================================================ */
-const cursors = document.querySelectorAll('.cursor-float');
+const eshanCursor = document.querySelector('.cursor-float--eshan');
+const youCursor = document.getElementById('cursor-you');
 const dotGrid = document.querySelector('.canvas-dots');
-if ((cursors.length || dotGrid) && isFinePointer) {
+
+if (isFinePointer) {
   let rafId = null;
-  let tx = 0, ty = 0;
+  let mx = 0, my = 0;       // parallax offsets
+  let lastClientX = 0, lastClientY = 0;
+
   window.addEventListener('mousemove', (e) => {
-    tx = (e.clientX / window.innerWidth - 0.5) * 20;
-    ty = (e.clientY / window.innerHeight - 0.5) * 20;
+    lastClientX = e.clientX;
+    lastClientY = e.clientY;
+    mx = (e.clientX / window.innerWidth - 0.5) * 20;
+    my = (e.clientY / window.innerHeight - 0.5) * 20;
+
     if (!rafId) {
       rafId = requestAnimationFrame(() => {
-        cursors.forEach((c, i) => {
-          const factor = (i + 1) * 0.3;
-          c.style.setProperty('--mx', `${tx * factor}px`);
-          c.style.setProperty('--my', `${ty * factor}px`);
-        });
+        // Eshan cursor drifts subtly with mouse
+        if (eshanCursor) {
+          eshanCursor.style.setProperty('--mx', `${mx * 0.6}px`);
+          eshanCursor.style.setProperty('--my', `${my * 0.6}px`);
+        }
+        // You cursor exactly at mouse (only visible when collab on)
+        if (youCursor) {
+          youCursor.style.setProperty('--cx', `${lastClientX + 6}px`);
+          youCursor.style.setProperty('--cy', `${lastClientY + 6}px`);
+        }
+        // Dot grid parallax
         if (dotGrid) {
-          dotGrid.style.transform = `translate3d(${tx * 0.5}px, ${ty * 0.5}px, 0)`;
+          dotGrid.style.transform = `translate3d(${mx * 0.5}px, ${my * 0.5}px, 0)`;
         }
         rafId = null;
       });
@@ -110,6 +153,28 @@ if ((cursors.length || dotGrid) && isFinePointer) {
 }
 
 /* ============================================================
-   Spline 3D hero (progressive enhancement on desktop only)
+   Links drawer (slide-in from right)
    ============================================================ */
-loadSplineHero('hero3d');
+const linksDrawer = document.getElementById('links-drawer');
+const linksTrigger = document.getElementById('links-trigger');
+const linksClose = document.getElementById('links-drawer-close');
+const linksBackdrop = document.getElementById('links-drawer-backdrop');
+
+function openDrawer() {
+  if (linksDrawer) {
+    linksDrawer.classList.add('is-open');
+    linksDrawer.setAttribute('aria-hidden', 'false');
+  }
+}
+function closeDrawer() {
+  if (linksDrawer) {
+    linksDrawer.classList.remove('is-open');
+    linksDrawer.setAttribute('aria-hidden', 'true');
+  }
+}
+if (linksTrigger) linksTrigger.addEventListener('click', openDrawer);
+if (linksClose) linksClose.addEventListener('click', closeDrawer);
+if (linksBackdrop) linksBackdrop.addEventListener('click', closeDrawer);
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeDrawer();
+});

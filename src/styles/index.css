@@ -1,5 +1,9 @@
 /* ============================================================
-   eshanjain.in — v2 · Interactive Canvas
+   eshanjain.in — v2.1 · Interactive Canvas
+   - Collaboration mode gate for all drag interactions
+   - Word-level hero drag, draggable expertise cards
+   - Sticky hero overlap on scroll (Figma canvas feel)
+   - Links drawer, single "Eshan" + "You" cursors
    ============================================================ */
 
 :root {
@@ -47,7 +51,7 @@ li { list-style: none; }
 em { font-style: normal; font-weight: 500; color: var(--text); }
 
 /* ============================================================
-   FigJam DOT grid (v2 — dots instead of lines)
+   Dot-grid background
    ============================================================ */
 .canvas-dots {
   position: fixed;
@@ -78,7 +82,7 @@ em { font-style: normal; font-weight: 500; color: var(--text); }
 main { position: relative; z-index: 1; }
 
 /* ============================================================
-   Top info / badges / ribbon
+   Top info / reset button
    ============================================================ */
 .top-info {
   position: fixed;
@@ -115,6 +119,9 @@ main { position: relative; z-index: 1; }
   transform: translateY(-1px);
 }
 
+/* ============================================================
+   Collaboration toggle (top-right)
+   ============================================================ */
 .top-badge {
   position: fixed;
   top: 28px; right: 32px;
@@ -124,18 +131,34 @@ main { position: relative; z-index: 1; }
   gap: 8px;
   padding: 8px 14px;
   font-size: 12px;
+  font-family: inherit;
   color: var(--text);
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border);
   border-radius: 999px;
+  cursor: pointer;
   transition: all 0.3s var(--ease);
 }
 .top-badge::before {
   content: '';
   width: 6px; height: 6px;
   border-radius: 50%;
+  background: var(--text-subtle);
+  transition: background 0.3s var(--ease);
+}
+.top-badge:hover {
+  background: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+body.is-collab-on .top-badge {
+  background: var(--dark);
+  color: #fff;
+  border-color: var(--dark);
+}
+body.is-collab-on .top-badge::before {
   background: var(--emerald);
   box-shadow: 0 0 0 0 var(--emerald);
   animation: pulseDot 2s ease-out infinite;
@@ -145,12 +168,10 @@ main { position: relative; z-index: 1; }
   70% { box-shadow: 0 0 0 8px rgba(16,185,129,0); }
   100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
 }
-.top-badge:hover {
-  background: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
 
+/* ============================================================
+   Side Links trigger
+   ============================================================ */
 .side-ribbon {
   position: fixed;
   right: 0; top: 50%;
@@ -162,9 +183,14 @@ main { position: relative; z-index: 1; }
   background: var(--dark);
   color: #fff;
   padding: 18px 8px;
+  border: none;
   border-radius: 6px 0 0 6px;
   box-shadow: -4px 6px 20px rgba(0,0,0,0.15);
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.3s var(--ease), padding 0.3s var(--ease);
 }
+.side-ribbon:hover { transform: translateY(-50%) translateX(-4px); padding: 20px 10px; }
 .side-ribbon__letter { font-size: 18px; color: #facc15; margin-bottom: 8px; }
 .side-ribbon__text {
   writing-mode: vertical-rl;
@@ -172,10 +198,106 @@ main { position: relative; z-index: 1; }
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  color: #fff;
 }
 
 /* ============================================================
-   Floating collaboration cursors
+   Links drawer (slides in from right)
+   ============================================================ */
+.links-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+}
+.links-drawer.is-open { pointer-events: auto; }
+.links-drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+.links-drawer.is-open .links-drawer__backdrop { opacity: 1; }
+.links-drawer__panel {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: min(420px, 88vw);
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  box-shadow: -24px 0 60px -12px rgba(0,0,0,0.2);
+  padding: 72px 40px 40px;
+  transform: translateX(100%);
+  transition: transform 0.5s var(--ease);
+  overflow-y: auto;
+}
+.links-drawer.is-open .links-drawer__panel { transform: translateX(0); }
+.links-drawer__close {
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+.links-drawer__close:hover { background: var(--dark); color: #fff; border-color: var(--dark); transform: rotate(90deg); }
+.links-drawer__eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin-bottom: 10px;
+}
+.links-drawer__title {
+  font-size: 34px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin-bottom: 36px;
+  color: var(--text);
+}
+.links-drawer__list { display: flex; flex-direction: column; gap: 6px; }
+.links-drawer__list a {
+  display: grid;
+  grid-template-columns: 44px 1fr auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 16px;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.25s var(--ease);
+}
+.links-drawer__list a:hover {
+  background: var(--bg-alt);
+  border-color: var(--border);
+  transform: translateX(4px);
+}
+.links-drawer__icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+}
+.links-drawer__list a:hover .links-drawer__icon { background: var(--dark); color: #fff; border-color: var(--dark); }
+.links-drawer__name { font-size: 15px; font-weight: 500; color: var(--text); }
+.links-drawer__handle { font-size: 12px; color: var(--text-subtle); }
+.links-drawer__arrow { font-size: 14px; color: var(--text-subtle); margin-left: 6px; }
+.links-drawer__list a:hover .links-drawer__arrow { color: var(--text); transform: translate(2px, -2px); }
+
+/* ============================================================
+   Cursors — 1 Eshan (autonomous) + 1 You (mouse-bound, collab only)
    ============================================================ */
 .cursor-float {
   position: fixed;
@@ -197,9 +319,7 @@ main { position: relative; z-index: 1; }
   border-radius: 999px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-.cursor-float--1 { top: 22%; left: 12%; animation-delay: 0s; }
-.cursor-float--2 { top: 42%; right: 20%; animation-delay: -4s; animation-duration: 18s; }
-.cursor-float--3 { top: 72%; left: 22%; animation-delay: -8s; animation-duration: 16s; }
+.cursor-float--eshan { top: 32%; left: 14%; }
 
 @keyframes cursorDrift {
   0%, 100% { transform: translate(var(--mx, 0), var(--my, 0)); }
@@ -208,15 +328,34 @@ main { position: relative; z-index: 1; }
   75% { transform: translate(calc(var(--mx, 0px) + 20px), calc(var(--my, 0px) + 15px)); }
 }
 
+/* "You" cursor — follows mouse, visible only when collab ON */
+.cursor-you {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translate3d(var(--cx, -100px), var(--cy, -100px), 0);
+  transition: opacity 0.25s var(--ease);
+}
+.cursor-you svg { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+body.is-collab-on .cursor-you { opacity: 1; }
+
 /* ============================================================
-   HERO
+   HERO — sticky overlap wrapper
    ============================================================ */
+.hero-wrap {
+  position: relative;
+  z-index: 1;
+}
 .hero {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 140px 6vw 60px;
+  padding: 140px 6vw 120px;
   position: relative;
 }
 .hero__inner {
@@ -228,7 +367,7 @@ main { position: relative; z-index: 1; }
   z-index: 2;
 }
 
-/* Hero name block — individual letter tiles */
+/* Hero name — word-level draggable */
 .hero__name-block { line-height: 0.85; }
 .hero__name {
   font-family: 'Inter', sans-serif;
@@ -237,37 +376,23 @@ main { position: relative; z-index: 1; }
   color: var(--text);
   letter-spacing: -0.045em;
   user-select: none;
-  display: flex;
-  flex-wrap: wrap;
-}
-.hero__name--line1 { font-weight: 200; }
-.hero__name--line2 {
-  font-weight: 900;
-  letter-spacing: -0.055em;
-}
-
-/* Individual letter tile — draggable */
-.letter-tile {
   display: inline-block;
-  cursor: grab;
-  touch-action: none;
-  -webkit-user-drag: none;
-  user-select: none;
-  position: relative;
   will-change: transform;
   transform: translate3d(0, 0, 0);
   transition: filter 0.3s var(--ease);
   padding: 0 0.02em;
 }
-.letter-tile:hover {
-  filter: drop-shadow(0 4px 12px rgba(15, 23, 42, 0.12));
+.hero__name--line1 { font-weight: 200; }
+.hero__name--line2 {
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.055em;
+  margin-top: 4px;
 }
-.letter-tile.is-dragging {
-  cursor: grabbing;
-  filter: drop-shadow(0 16px 32px rgba(15, 23, 42, 0.25));
+.hero__name.is-dragging {
+  filter: drop-shadow(0 24px 48px rgba(15, 23, 42, 0.22));
   z-index: 1000;
 }
-.letter-tile--alt { font-style: italic; }
 
 /* Hero bio */
 .hero__bio {
@@ -279,17 +404,9 @@ main { position: relative; z-index: 1; }
   position: relative;
   z-index: 2;
 }
-.hero__bio p + p.hero__bio-hint {
-  margin-top: 18px;
-  font-size: 12px;
-  color: var(--text-subtle);
-  font-style: italic;
-  padding-left: 12px;
-  border-left: 2px solid var(--dot);
-}
 
 .hero__cta {
-  margin-top: 80px;
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -335,89 +452,10 @@ main { position: relative; z-index: 1; }
 }
 
 /* ============================================================
-   Hero 3D element (Spline or CSS cube fallback)
-   ============================================================ */
-.hero__3d {
-  position: absolute;
-  top: 50%;
-  right: 7%;
-  transform: translateY(-50%);
-  width: 340px;
-  height: 340px;
-  z-index: 1;
-  pointer-events: none;
-}
-.hero__3d.has-spline .hero__3d-fallback { opacity: 0; transition: opacity 0.6s ease; }
-
-.hero__3d-fallback {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1200px;
-}
-
-.css-cube {
-  position: relative;
-  width: 160px;
-  height: 160px;
-  transform-style: preserve-3d;
-  animation: cubeRotate 22s infinite linear;
-}
-.css-cube__face {
-  position: absolute;
-  width: 160px;
-  height: 160px;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(139, 92, 246, 0.9));
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: inset 0 0 40px rgba(255,255,255,0.1), 0 0 40px rgba(59, 130, 246, 0.2);
-  backdrop-filter: blur(2px);
-}
-.css-cube__face--front  { transform: rotateY(  0deg) translateZ(80px); background: linear-gradient(135deg, #3b82f6, #8b5cf6); }
-.css-cube__face--back   { transform: rotateY(180deg) translateZ(80px); background: linear-gradient(135deg, #8b5cf6, #ec4899); }
-.css-cube__face--right  { transform: rotateY( 90deg) translateZ(80px); background: linear-gradient(135deg, #10b981, #3b82f6); }
-.css-cube__face--left   { transform: rotateY(-90deg) translateZ(80px); background: linear-gradient(135deg, #ec4899, #f59e0b); }
-.css-cube__face--top    { transform: rotateX( 90deg) translateZ(80px); background: linear-gradient(135deg, #f59e0b, #10b981); }
-.css-cube__face--bottom { transform: rotateX(-90deg) translateZ(80px); background: linear-gradient(135deg, #1c1917, #3b82f6); }
-
-@keyframes cubeRotate {
-  0%   { transform: rotateX(0) rotateY(0); }
-  100% { transform: rotateX(360deg) rotateY(360deg); }
-}
-
-/* Glow underneath */
-.hero__3d-fallback::after {
-  content: '';
-  position: absolute;
-  bottom: 20%;
-  left: 50%;
-  width: 180px;
-  height: 40px;
-  transform: translateX(-50%);
-  background: radial-gradient(ellipse, rgba(59, 130, 246, 0.35), transparent 70%);
-  filter: blur(14px);
-  animation: glowPulse 4s ease-in-out infinite;
-}
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-  50% { opacity: 1; transform: translateX(-50%) scale(1.12); }
-}
-
-/* Spline viewer overrides */
-.hero__3d spline-viewer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* ============================================================
-   Stickers — 4 draggable scattered elements
+   Stickers (3 — heart removed in v2.1)
    ============================================================ */
 .sticker {
   position: absolute;
-  cursor: grab;
   touch-action: none;
   -webkit-user-drag: none;
   user-select: none;
@@ -429,17 +467,14 @@ main { position: relative; z-index: 1; }
 }
 .sticker:hover { filter: drop-shadow(0 10px 20px rgba(15, 23, 42, 0.22)); }
 .sticker.is-dragging {
-  cursor: grabbing;
   filter: drop-shadow(0 18px 30px rgba(15, 23, 42, 0.28));
   z-index: 1000;
 }
 
-/* Initial scattered positions — rotation via --rotate CSS var
-   (draggable lib reads this and preserves it during drag) */
+/* Initial scattered positions — rotation via --rotate CSS var */
 .sticker--1 { top: 140px;  right: 10vw; --rotate: -8deg; transform: rotate(var(--rotate)); }
 .sticker--2 { top: 46%;    left: 6vw;   --rotate:  4deg; transform: rotate(var(--rotate)); }
 .sticker--3 { top: 28%;    right: 30vw; --rotate: -2deg; transform: rotate(var(--rotate)); }
-.sticker--4 { bottom: 22%; right: 16vw; --rotate: 10deg; transform: rotate(var(--rotate)); }
 
 .sticker__note {
   font-family: 'Inter', sans-serif;
@@ -455,14 +490,85 @@ main { position: relative; z-index: 1; }
 }
 
 /* ============================================================
-   SECTIONS (shared)
+   Draggable gating + Figma-style hover border
+   ============================================================ */
+/* Default (collab OFF): no pointer affordances */
+[data-drag] { cursor: default; }
+[data-drag].is-dragging { cursor: grabbing; }
+
+/* Collab ON: enable grab cursor and hover outline */
+body.is-collab-on [data-drag] { cursor: grab; }
+body.is-collab-on [data-drag].is-dragging { cursor: grabbing; }
+
+/* Pseudo-elements use element's existing position context.
+   Avoid forcing `position: relative` here — it breaks `.sticker { position: absolute }`.
+   Hero words and cards are inline/flow elements, so we set relative only for them. */
+body.is-collab-on .hero__name[data-drag],
+body.is-collab-on .expertise-card[data-drag] { position: relative; }
+body.is-collab-on [data-drag]:hover::before,
+body.is-collab-on [data-drag].is-dragging::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1.5px solid var(--accent);
+  border-radius: 3px;
+  pointer-events: none;
+  z-index: 50;
+}
+body.is-collab-on [data-drag]:hover::after,
+body.is-collab-on [data-drag].is-dragging::after {
+  content: attr(data-drag-label);
+  position: absolute;
+  top: -26px;
+  left: -8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 51;
+}
+/* Corner dots (Figma selection handles) */
+body.is-collab-on [data-drag]:hover,
+body.is-collab-on [data-drag].is-dragging {
+  --sel-dot: radial-gradient(circle, #fff 40%, var(--accent) 42%, var(--accent) 70%, transparent 72%);
+}
+
+/* ============================================================
+   SECTIONS — overlap experience over hero (Figma canvas feel)
    ============================================================ */
 .section {
   padding: 120px 6vw;
   border-top: 1px solid var(--border);
   position: relative;
-  background: rgba(245, 245, 244, 0.6);
-  backdrop-filter: blur(2px);
+  z-index: 2;
+  background: var(--bg);
+}
+
+.section--overlap {
+  margin-top: -80px;
+  border-top: none;
+  border-radius: 32px 32px 0 0;
+  box-shadow: 0 -24px 60px -12px rgba(15, 23, 42, 0.08),
+              0 -1px 0 0 var(--border);
+  padding-top: 120px;
+}
+.section--overlap::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 60px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--border);
+  transform: translateX(-50%);
 }
 
 .section__header {
@@ -528,7 +634,7 @@ main { position: relative; z-index: 1; }
 .role-row__company:hover .arrow,
 a:hover .arrow { transform: translate(2px, -2px); opacity: 1; }
 
-/* Expertise grid with 3D tilt */
+/* Expertise grid — cards are draggable (collab-gated) */
 .expertise-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -539,34 +645,34 @@ a:hover .arrow { transform: translate(2px, -2px); opacity: 1; }
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 32px 28px;
-  transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
-  position: relative;
-  transform-style: preserve-3d;
+  transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease), filter 0.3s var(--ease);
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  will-change: transform;
 }
 .expertise-card:hover {
   border-color: var(--text-subtle);
   box-shadow: 0 24px 48px -24px rgba(15, 23, 42, 0.2);
+}
+.expertise-card.is-dragging {
+  filter: drop-shadow(0 24px 48px rgba(15, 23, 42, 0.25));
+  z-index: 1000;
 }
 .expertise-card__icon {
   width: 56px;
   height: 56px;
   color: var(--text);
   margin-bottom: 18px;
-  transform: translateZ(20px);
 }
 .expertise-card__icon svg { width: 100%; height: 100%; }
 .expertise-card h3 {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 8px;
-  transform: translateZ(10px);
 }
 .expertise-card p {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.5;
-  transform: translateZ(5px);
 }
 
 /* Project list */
@@ -607,6 +713,7 @@ a.project-row__visit:hover { background: var(--dark); color: #fff; }
   color: #fff;
   padding: 120px 6vw 60px;
   position: relative;
+  z-index: 2;
   overflow: hidden;
 }
 .footer__grid-overlay {
@@ -687,32 +794,22 @@ a.project-row__visit:hover { background: var(--dark); color: #fff; }
 /* ============================================================
    Responsive
    ============================================================ */
-@media (max-width: 1200px) {
-  .hero__3d { width: 280px; height: 280px; right: 4%; }
-  .css-cube, .css-cube__face { width: 130px; height: 130px; }
-  .css-cube__face--front  { transform: rotateY(  0deg) translateZ(65px); }
-  .css-cube__face--back   { transform: rotateY(180deg) translateZ(65px); }
-  .css-cube__face--right  { transform: rotateY( 90deg) translateZ(65px); }
-  .css-cube__face--left   { transform: rotateY(-90deg) translateZ(65px); }
-  .css-cube__face--top    { transform: rotateX( 90deg) translateZ(65px); }
-  .css-cube__face--bottom { transform: rotateX(-90deg) translateZ(65px); }
-}
-
 @media (max-width: 900px) {
   .top-info { top: 18px; left: 20px; }
   .top-badge { top: 18px; right: 20px; padding: 6px 10px; font-size: 11px; }
   .side-ribbon { display: none; }
-  .hero { padding: 110px 5vw 60px; }
+  .hero { padding: 110px 5vw 80px; }
   .hero__inner { grid-template-columns: 1fr; gap: 24px; }
   .hero__bio { margin-top: 0; }
   .hero__cta { margin-top: 48px; }
-  .hero__3d { display: none; }
-  /* Mobile: disable drag completely — use as static decoration */
-  .letter-tile, .sticker { cursor: default; touch-action: auto; pointer-events: none; }
+  .section--overlap { margin-top: -40px; border-radius: 24px 24px 0 0; padding-top: 80px; }
+  /* Mobile: freeze all drag (no collab mode on mobile) */
+  [data-drag] { cursor: default !important; touch-action: auto; }
+  body.is-collab-on [data-drag]:hover::before,
+  body.is-collab-on [data-drag]:hover::after { display: none; }
   .sticker--1 { top: 90px; right: 4vw; transform: rotate(-8deg) scale(0.7); }
   .sticker--2 { top: 62%; left: 4vw; transform: rotate(4deg) scale(0.75); }
   .sticker--3 { display: none; }
-  .sticker--4 { display: none; }
   .section { padding: 80px 5vw; }
   .section__body { grid-template-columns: 1fr; gap: 40px; }
   .section__intro p { font-size: 17px; }
@@ -724,9 +821,9 @@ a.project-row__visit:hover { background: var(--dark); color: #fff; }
   .project-row__desc { grid-column: 1 / -1; }
   .footer { padding: 80px 5vw 40px; }
   .footer__bottom { flex-direction: column; gap: 8px; }
-  .cursor-float { display: none; }
+  .cursor-float, .cursor-you { display: none; }
   .top-info__reset { display: none; }
-  .hero__bio p + p.hero__bio-hint { display: none; }
+  .links-drawer__panel { padding: 64px 24px 32px; }
 }
 
 @media (max-width: 500px) {
@@ -739,6 +836,6 @@ a.project-row__visit:hover { background: var(--dark); color: #fff; }
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
-  .cursor-float, .css-cube, .hero__3d-fallback::after { display: none; }
-  .letter-tile, .sticker { cursor: default; touch-action: auto; pointer-events: none; }
+  .cursor-float, .cursor-you { display: none; }
+  [data-drag] { cursor: default; pointer-events: auto; }
 }

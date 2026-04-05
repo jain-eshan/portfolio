@@ -59,6 +59,8 @@ export function makeDraggable(el, opts = {}) {
 
   function onDown(e) {
     if (e.button !== undefined && e.button !== 0) return;
+    // Gate: only allow dragging when collaboration mode is ON
+    if (!document.body.classList.contains('is-collab-on')) return;
     // Ignore if the user clicked a link/button inside the draggable (let it through)
     const target = e.target;
     if (target !== el && (target.closest?.('a, button') && !target.closest?.('.drag-handle'))) {
