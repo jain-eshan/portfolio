@@ -921,11 +921,11 @@ a.project-row__visit:hover { background: var(--dark); color: #fff; }
   all: unset;
   cursor: pointer;
   display: grid;
-  grid-template-columns: 44px 1fr auto;
+  grid-template-columns: 36px 1fr auto;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   width: 100%;
-  padding: 22px 8px;
+  padding: 16px 8px;
   position: relative;
   transition: background 0.25s var(--ease), padding 0.25s var(--ease);
 }
@@ -947,21 +947,21 @@ a.project-row__visit:hover { background: var(--dark); color: #fff; }
   color: var(--text-subtle);
   letter-spacing: 0.08em;
 }
-.writing-row__meta { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.writing-row__meta { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
 .writing-row__title {
-  font-size: clamp(20px, 2.4vw, 28px);
+  font-size: 16px;
   font-weight: 500;
   color: var(--text);
-  line-height: 1.25;
+  line-height: 1.35;
   letter-spacing: -0.01em;
   transition: color 0.25s var(--ease);
 }
 .writing-row__btn:hover .writing-row__title,
 .writing-row__btn:focus-visible .writing-row__title { color: var(--accent); }
 .writing-row__excerpt {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-muted);
-  line-height: 1.55;
+  line-height: 1.5;
   max-width: 62ch;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -1005,7 +1005,7 @@ a.project-row__visit:hover { background: var(--dark); color: #fff; }
 }
 
 @media (max-width: 720px) {
-  .writing-row__btn { grid-template-columns: 32px 1fr; gap: 12px; padding: 18px 6px; }
+  .writing-row__btn { grid-template-columns: 28px 1fr; gap: 10px; padding: 14px 6px; }
   .writing-row__side { grid-column: 2 / -1; gap: 10px; padding-top: 4px; }
   .writing-row__tag { display: none; }
   .writing-row__excerpt { -webkit-line-clamp: 2; }
