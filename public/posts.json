@@ -40,7 +40,17 @@
       ],
       "readTime": "1 min read",
       "html": "<p>The first version of this site was fine. Tasteful. Safe. It looked like every other PM portfolio in 2025.</p>\n<p>That was the problem.</p>\n<h2>The brief I gave myself</h2>\n<p>A portfolio is supposed to be proof. Not a résumé in slightly nicer typography — actual evidence of how someone thinks. So I rewrote the brief: <strong>every pixel on the homepage should demonstrate something about how I build.</strong></p>\n<p>That led to the collaboration toggle. Flip it on and the page stops behaving like a document. The hero letters become draggable. The cards tilt. A second cursor appears — yours — and you can push things around the canvas. It&#39;s a live Figma file disguised as a portfolio.</p>\n<h2>Why draggable</h2>\n<p>Because I believe the best products feel like they <em>want</em> to be touched. Static sites are a compromise we made when browsers were slow. They aren&#39;t anymore.</p>\n<h2>What broke</h2>\n<p>The first version used individual letter drag — each &quot;E&quot;, &quot;S&quot;, &quot;H&quot;, &quot;A&quot;, &quot;N&quot; was its own draggable. It looked cute in my head and felt chaotic in practice. Word-level drag is the right abstraction.</p>\n<p>The sticker on the hero also collapsed into document flow the first time I shipped the hover borders. One-line CSS fix, but it took me embarrassingly long to find.</p>\n<h2>What I&#39;d do differently</h2>\n<p>Ship smaller. I held v2 for two weeks trying to get every interaction perfect. Should have pushed the canvas-drag-only version on day three and iterated in public.</p>\n<h2>What&#39;s next</h2>\n<p>v2.2 is live right now — you&#39;re reading it. I added writings (this page), backed by Obsidian files in the repo. Every post you see here started as a note I wrote in bed.</p>\n"
+    },
+    {
+      "title": "Welcome",
+      "slug": "welcome",
+      "date": "",
+      "dateDisplay": "",
+      "excerpt": "",
+      "tags": [],
+      "readTime": "1 min read",
+      "html": "<p>This is your new <em>vault</em>.</p>\n<p>Make a note of something, create a link, or try <a href=\"https://help.obsidian.md/Plugins/Importer\">the Importer</a>!</p>\n<p>When you&#39;re ready, delete this note and make the vault your own.</p>\n"
     }
   ],
-  "builtAt": "2026-04-05T11:16:43.666Z"
+  "builtAt": "2026-04-05T14:11:29.392Z"
 }
