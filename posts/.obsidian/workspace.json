@@ -195,7 +195,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 208.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -209,7 +209,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "448e98b1d5f9ee9b",
+  "active": "22ae6a5bcefc98bb",
   "lastOpenFiles": [
     "Welcome.md",
     "Test Formatter.md"

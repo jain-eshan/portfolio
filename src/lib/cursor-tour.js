@@ -6,23 +6,28 @@
    so scrolling always shows a relevant tour.
    ============================================================ */
 
+// Waypoints are ordered top → bottom. Offsets pick a point inside each
+// target element; we deliberately keep offsets near the left/centre so
+// the cursor never flies out to the far right edge of the viewport.
 const WAYPOINTS = [
-  // Ordered: top of page → bottom. Offsets place the cursor's tip
-  // near the bottom-right of the target so the arrow "points at" it.
-  { selector: '.hero__name--line1',              offset: [0.55, 0.45] },
-  { selector: '#collab-toggle',                  offset: [0.35, 0.70] },
-  { selector: '.hero__name--line2',              offset: [0.70, 0.45] },
-  { selector: '.hero__cta .btn-primary',         offset: [0.55, 0.55] },
-  { selector: '#experience .role-row',           offset: [0.10, 0.55] },
-  { selector: '#expertise .expertise-card',      offset: [0.65, 0.50] },
-  { selector: '#projects .project-row',          offset: [0.15, 0.55] },
-  { selector: '#writings .writings-card',        offset: [0.12, 0.25] },
-  { selector: '#links-trigger',                  offset: [0.35, 0.50] },
-  { selector: '#contact .footer__email',         offset: [0.45, 0.60] },
+  { selector: '.hero__name--line1',              offset: [0.18, 0.55] },
+  { selector: '.hero__name--line2',              offset: [0.22, 0.55] },
+  { selector: '.hero__cta .btn-primary',         offset: [0.50, 0.55] },
+  { selector: '#experience .role-row',           offset: [0.08, 0.55] },
+  { selector: '#expertise .expertise-card',      offset: [0.30, 0.45] },
+  { selector: '#projects .project-row',          offset: [0.10, 0.55] },
+  { selector: '#writings .writings-card',        offset: [0.14, 0.30] },
+  { selector: '#contact .footer__email',         offset: [0.20, 0.55] },
 ];
 
-const TRAVEL_MS = 1800;      // time to glide between waypoints
-const DWELL_MS = 2000;       // time paused at each waypoint
+// Confine cursor horizontally to a narrow band so it doesn't swing
+// across the full page width (which looked abrupt). Vertical range
+// is whatever is currently in the viewport.
+const X_BAND_MIN = 0.12;   // 12% from left edge
+const X_BAND_MAX = 0.48;   // 48% from left edge
+
+const TRAVEL_MS = 2600;    // slower, calmer glide between waypoints
+const DWELL_MS = 2400;     // time paused at each waypoint
 
 let cursorEl = null;
 let tourIndex = -1;
@@ -53,10 +58,19 @@ function nextVisibleWaypoint() {
 function moveTo({ idx, el, wp }) {
   const rect = el.getBoundingClientRect();
   const [ox, oy] = wp.offset || [0.5, 0.5];
-  const x = Math.round(rect.left + rect.width * ox);
-  const y = Math.round(rect.top + rect.height * oy);
+  let x = rect.left + rect.width * ox;
+  let y = rect.top + rect.height * oy;
 
-  cursorEl.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+  // Clamp X into the narrow band so the cursor stays in a calm zone.
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const xMin = vw * X_BAND_MIN;
+  const xMax = vw * X_BAND_MAX;
+  x = Math.max(xMin, Math.min(xMax, x));
+  // Keep Y comfortably inside the viewport.
+  y = Math.max(vh * 0.18, Math.min(vh * 0.82, y));
+
+  cursorEl.style.transform = `translate3d(${Math.round(x)}px, ${Math.round(y)}px, 0)`;
   cursorEl.classList.add('is-pulsing');
   setTimeout(() => cursorEl?.classList.remove('is-pulsing'), 900);
   tourIndex = idx;

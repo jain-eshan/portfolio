@@ -50,6 +50,14 @@ export async function mountWritings(selector, { limit = 0, emptyEl = null } = {}
 
   list.innerHTML = slice.map((p, i) => rowTemplate(p, i)).join('');
 
+  // Rows are injected *after* the global IntersectionObserver set up in main.js
+  // has scanned the DOM, so they'd stay invisible forever. Reveal them now
+  // with a small staggered delay for a nice cascade.
+  const rows = list.querySelectorAll('.writing-row');
+  rows.forEach((row, i) => {
+    setTimeout(() => row.classList.add('is-visible'), 40 * i);
+  });
+
   list.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-slug]');
     if (!btn) return;
