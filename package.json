@@ -1,0 +1,20 @@
+{
+  "name": "eshanjain-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Personal portfolio for Eshan Jain — Product Manager, designer & builder.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "author": "Eshan Jain",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "devDependencies": {
+    "vite": "^8.0.3"
+  }
+}
