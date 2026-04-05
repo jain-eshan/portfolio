@@ -63,7 +63,10 @@ export function initWritings() {
   const home = document.getElementById('writings-list');
   if (home) {
     const lim = parseInt(home.dataset.limit || '0', 10);
-    mountWritings('#writings-list', { limit: lim });
+    mountWritings('#writings-list', {
+      limit: lim,
+      emptyEl: document.getElementById('writings-home-empty'),
+    });
   }
   // Blog page: #writings-list-full
   const full = document.getElementById('writings-list-full');

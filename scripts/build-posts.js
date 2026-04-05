@@ -109,10 +109,23 @@ function main() {
     const raw = readFileSync(full, 'utf-8');
     const { meta, body } = parseFrontmatter(raw);
 
-    // Skip drafts
+    // Skip drafts + explicit unpublished
     if (meta.published === false) continue;
 
-    const title = meta.title || basename(file, '.md');
+    // Skip files without frontmatter entirely (notes, scratchpads, Obsidian
+    // default "Welcome.md" etc.) — a valid post needs at least title + date.
+    if (!meta.title || !meta.date) {
+      console.log(`[build-posts] skipping "${file}" — missing title or date frontmatter`);
+      continue;
+    }
+
+    // Skip unfilled template placeholders so the starter doesn't ship
+    if (meta.slug === 'url-friendly-slug' || meta.title === 'Your post title') {
+      console.log(`[build-posts] skipping "${file}" — template placeholder not filled in`);
+      continue;
+    }
+
+    const title = meta.title;
     const slug = meta.slug || slugify(title);
     const date = isoDate(meta.date);
     const excerpt = meta.excerpt || '';

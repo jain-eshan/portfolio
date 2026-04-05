@@ -1,6 +1,7 @@
 import './styles/index.css';
 import { initDraggables, resetAllDraggables } from './lib/draggable.js';
 import { initWritings } from './lib/writings.js';
+import { initCursorTour } from './lib/cursor-tour.js';
 
 /* ============================================================
    Live clock (Delhi time)
@@ -133,11 +134,7 @@ if (isFinePointer) {
 
     if (!rafId) {
       rafId = requestAnimationFrame(() => {
-        // Eshan cursor drifts subtly with mouse
-        if (eshanCursor) {
-          eshanCursor.style.setProperty('--mx', `${mx * 0.6}px`);
-          eshanCursor.style.setProperty('--my', `${my * 0.6}px`);
-        }
+        // Eshan cursor position is controlled by cursor-tour.js (guided tour)
         // You cursor exactly at mouse (only visible when collab on)
         if (youCursor) {
           youCursor.style.setProperty('--cx', `${lastClientX + 6}px`);
@@ -177,6 +174,13 @@ function closeDrawer() {
    Writings (homepage list + post drawer)
    ============================================================ */
 initWritings();
+
+/* ============================================================
+   Eshan cursor guided tour across page waypoints
+   ============================================================ */
+if (isFinePointer && !reducedMotion) {
+  initCursorTour();
+}
 
 if (linksTrigger) linksTrigger.addEventListener('click', openDrawer);
 if (linksClose) linksClose.addEventListener('click', closeDrawer);
