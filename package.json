@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "posts": "node scripts/build-posts.js",
-    "dev": "node scripts/build-posts.js && vite --port 3000",
-    "build": "node scripts/build-posts.js && vite build",
+    "cases": "node scripts/build-cases.js",
+    "dev": "node scripts/build-posts.js && node scripts/build-cases.js && vite --port 3000",
+    "build": "node scripts/build-posts.js && node scripts/build-cases.js && vite build",
     "preview": "vite preview --port 4173"
   },
   "author": "Eshan Jain",

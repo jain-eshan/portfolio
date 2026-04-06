@@ -3,8 +3,9 @@
    ============================================================ */
 
 import './styles/index.css';
-import { initTheme, initReveal, initSmoothScroll } from './lib/shared.js';
+import { initTheme, initReveal, initSmoothScroll, initClock } from './lib/shared.js';
 
 initTheme();
+initClock();
 initReveal();
 initSmoothScroll();

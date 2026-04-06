@@ -36,20 +36,6 @@
   <link rel="stylesheet" href="/src/styles/index.css" />
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="site-nav">
-    <a href="/" class="site-nav__logo">Eshan Jain</a>
-    <div class="site-nav__links">
-      <a href="/work" class="site-nav__link">Work</a>
-      <a href="/about" class="site-nav__link">About</a>
-      <a href="/blog" class="site-nav__link">Blog</a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-        <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-        <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      </button>
-    </div>
-  </nav>
-
   <!-- FigJam dot-grid background -->
   <div class="canvas-dots" aria-hidden="true"></div>
   <div class="canvas-vignette" aria-hidden="true"></div>
@@ -72,19 +58,30 @@
 
   <!-- Top-left: Live clock + reset -->
   <div class="top-info">
-    <p class="top-info__line"><span id="location">DELHI</span> <span id="clock">—</span> · <span id="date">—</span></p>
-    <p class="top-info__line">28°C <span class="top-info__icon">☀︎</span></p>
+    <a href="/" class="top-info__home">
+      <p class="top-info__line"><span id="location">DELHI</span> <span id="clock">—</span> · <span id="date">—</span></p>
+      <p class="top-info__line">28°C <span class="top-info__icon">☀︎</span></p>
+    </a>
     <button class="top-info__reset" id="reset-layout" title="Reset draggable positions" aria-label="Reset layout">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
       Reset layout
     </button>
   </div>
 
-  <!-- Top-right: Collaboration toggle button -->
-  <button class="top-badge" id="collab-toggle" aria-pressed="false" aria-label="Toggle collaboration mode">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    <span class="top-badge__label">Collaboration off</span>
-  </button>
+  <!-- Top-right: Nav + Collaboration toggle + Theme toggle -->
+  <div class="top-controls">
+    <a href="/work" class="top-nav__link">Work</a>
+    <a href="/about" class="top-nav__link">About</a>
+    <a href="/blog" class="top-nav__link">Blog</a>
+    <button class="top-badge" id="collab-toggle" aria-pressed="false" aria-label="Toggle collaboration mode">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span class="top-badge__label">Collaboration off</span>
+    </button>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+      <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
 
   <!-- Right side: Links trigger -->
   <button class="side-ribbon" id="links-trigger" aria-label="Open links drawer">

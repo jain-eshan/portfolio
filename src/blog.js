@@ -3,10 +3,11 @@
    ============================================================ */
 
 import './styles/index.css';
-import { initTheme, initReveal } from './lib/shared.js';
+import { initTheme, initReveal, initClock } from './lib/shared.js';
 import { initWritings } from './lib/writings.js';
 
 initTheme();
+initClock();
 initWritings();
 // Writings render async — re-observe after they're in the DOM
 setTimeout(initReveal, 0);

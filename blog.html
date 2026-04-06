@@ -27,19 +27,20 @@
   <link rel="stylesheet" href="/src/styles/index.css" />
 </head>
 <body class="page-blog">
-  <!-- Navigation -->
-  <nav class="site-nav">
-    <a href="/" class="site-nav__logo">Eshan Jain</a>
-    <div class="site-nav__links">
-      <a href="/work" class="site-nav__link">Work</a>
-      <a href="/about" class="site-nav__link">About</a>
-      <a href="/blog" class="site-nav__link is-active">Blog</a>
+  <!-- Header bar -->
+  <header class="page-header">
+    <a href="/" class="page-header__name">Eshan Jain</a>
+    <p class="page-header__center">Delhi · <span id="clock">—</span></p>
+    <nav class="page-header__nav">
+      <a href="/work" class="page-header__link">Work</a>
+      <a href="/about" class="page-header__link">About</a>
+      <a href="/blog" class="page-header__link is-active">Blog</a>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
         <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
         <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       </button>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <!-- FigJam dot-grid background -->
   <div class="canvas-dots" aria-hidden="true"></div>

@@ -67,6 +67,22 @@ export function initReveal() {
   }
 }
 
+/* ---------- Live clock (Delhi time, for inner page headers) ---------- */
+
+export function initClock() {
+  const clockEl = document.getElementById('clock');
+  if (!clockEl) return;
+  function tick() {
+    const now = new Date();
+    const time = now.toLocaleTimeString('en-US', {
+      hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'Asia/Kolkata',
+    });
+    clockEl.textContent = time;
+  }
+  tick();
+  setInterval(tick, 30_000);
+}
+
 /* ---------- Smooth anchor scroll ---------- */
 
 export function initSmoothScroll() {
