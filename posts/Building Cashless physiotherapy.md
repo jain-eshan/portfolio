@@ -11,6 +11,15 @@ If I were to ask any health professional right now about the most trending speci
 
 I was charged with shipping Cashless Physiotherapy end-to-end  from a blank slate to live production across Android, iOS, web, operations dashboards, partner dashboards, and doctor panels. This is the story of how that happened.
 
+```columns
+id: u4TdXgMTeWBZfIZhmdOxH
+===
+A couple of standalone physiotherapy apps had a digital play, so we studied their UIs and flows. But their context was different — they were single-sided consumer apps, not multi-stakeholder platforms. We had to design from first principles.
+
+===
+[[/images/cashless-physio/slack-design-changes.png]]
+
+```
 ## The directive
 
 It started in June 2025 with a call from our MD. The message was clear: some of our largest insurance and corporate partners had been asking for cashless physiotherapy as a value-added service for their users. We already had a reimbursement flow for physio sessions, which gave us a decent proof-of-concept that demand existed. The ask was simple — build the cashless module and go live as soon as possible.
