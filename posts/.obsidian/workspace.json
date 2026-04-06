@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Building Cashless physiotherapy.md",
+                "file": "shipping-v2-portfolio.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Building Cashless physiotherapy"
+              "title": "shipping-v2-portfolio"
             }
           }
         ]
@@ -197,6 +197,8 @@
   },
   "active": "77f44dd148424c5c",
   "lastOpenFiles": [
+    "Building Smart Health Reports.md",
+    "Building Cashless physiotherapy.md",
     "Pasted image 20260406173855.png",
     "images/cashless-physio/Dashboards.png",
     "images/cashless-physio/Figma Designs.png",
@@ -204,7 +206,6 @@
     "images/cashless-physio/29-10-25 MoM.png",
     "images/cashless-physio/22-01-26 Live Slack Message.png",
     "images/cashless-physio/21-11-25 Feedback.png",
-    "Building Cashless physiotherapy.md",
     "images/cashless-physio/22-10-25 Go-Live meeting.png",
     "images/cashless-physio/7-11-25 Bug Fixes before Prod Movt.png",
     "images/cashless-physio/slack-prd-kickoff.png.md",
@@ -213,7 +214,6 @@
     "Design requirements, FE changes, and backend specs being tracked in parallel — the backlog grew faster than we could ship..md",
     "images/cashless-physio",
     "images",
-    "Building Smart Health Reports.md",
     "non-technical-founders-ai.md",
     "welcome-to-my-writing.md",
     "Welcome.md",
