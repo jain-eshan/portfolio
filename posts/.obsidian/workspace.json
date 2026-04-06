@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "welcome-to-my-writing.md",
+                "file": "shipping-v2-portfolio.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "welcome-to-my-writing"
+              "title": "shipping-v2-portfolio"
             }
           }
         ]
@@ -40,7 +40,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical",
+                "sortOrder": "byModifiedTime",
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
@@ -196,9 +196,10 @@
   },
   "active": "289a1375b52675e3",
   "lastOpenFiles": [
+    "non-technical-founders-ai.md",
+    "welcome-to-my-writing.md",
     "shipping-v2-portfolio.md",
     "Welcome.md",
-    "non-technical-founders-ai.md",
     "Test Formatter.md"
   ]
 }
