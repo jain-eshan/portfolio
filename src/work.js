@@ -1,0 +1,10 @@
+/* ============================================================
+   work.js — entry point for /work.html
+   ============================================================ */
+
+import './styles/index.css';
+import { initTheme, initReveal, initSmoothScroll } from './lib/shared.js';
+
+initTheme();
+initReveal();
+initSmoothScroll();

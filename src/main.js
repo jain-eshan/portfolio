@@ -1,7 +1,15 @@
 import './styles/index.css';
+import { initTheme, initReveal, initSmoothScroll } from './lib/shared.js';
 import { initDraggables, resetAllDraggables } from './lib/draggable.js';
 import { initWritings } from './lib/writings.js';
 import { initCursorTour } from './lib/cursor-tour.js';
+
+/* ============================================================
+   Shared: theme, scroll reveal, smooth scroll
+   ============================================================ */
+initTheme();
+initReveal();
+initSmoothScroll();
 
 /* ============================================================
    Live clock (Delhi time)
@@ -17,44 +25,6 @@ function updateClock() {
 }
 updateClock();
 setInterval(updateClock, 30_000);
-
-/* ============================================================
-   Scroll reveal (IntersectionObserver)
-   ============================================================ */
-const revealEls = document.querySelectorAll('[data-reveal]');
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          const delay = (i % 5) * 60;
-          setTimeout(() => entry.target.classList.add('is-visible'), delay);
-          io.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-  );
-  revealEls.forEach((el) => io.observe(el));
-} else {
-  revealEls.forEach((el) => el.classList.add('is-visible'));
-}
-
-/* ============================================================
-   Smooth anchor scroll
-   ============================================================ */
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener('click', (e) => {
-    const id = link.getAttribute('href');
-    if (id && id.length > 1) {
-      const target = document.querySelector(id);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  });
-});
 
 /* ============================================================
    Breakpoints + draggable init (desktop only)
