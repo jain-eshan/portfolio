@@ -5,7 +5,7 @@
    Runs as part of `npm run build` and `npm run dev`.
    ============================================================ */
 
-import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync, cpSync } from 'node:fs';
 import { join, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { marked } from 'marked';
@@ -50,12 +50,28 @@ function parseFrontmatter(raw) {
 }
 
 // Obsidian quirks: strip wikilinks [[...]] → plain text (or convert to <a> if it's a URL)
-function cleanObsidianSyntax(md) {
+function cleanObsidianSyntax(md, imageDir = '') {
+  const imgBase = imageDir ? `/images/${imageDir}/` : './assets/';
   return md
-    // ![[image.png]] → ![](./assets/image.png)
-    .replace(/!\[\[([^\]]+)\]\]/g, (_, p) => `![](${p.startsWith('http') ? p : './assets/' + p})`)
+    // ![[image.png|350]] → <img src="..." width="350" />
+    .replace(/!\[\[([^\]|]+)\|(\d+)\]\]/g, (_, file, width) =>
+      `<img src="${imgBase}${file}" width="${width}" loading="lazy" />`)
+    // ![[image.png]] → ![](path/image.png)
+    .replace(/!\[\[([^\]]+)\]\]/g, (_, p) => `![](${p.startsWith('http') ? p : imgBase + p})`)
     // [[wikilink]] → wikilink (plain text, not followable)
     .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, link, alias) => alias || link);
+}
+
+// Obsidian columns plugin: ```columns ... ``` → two-column HTML grid
+function preprocessObsidianColumns(md) {
+  return md.replace(/```columns\n([\s\S]*?)```/g, (_, inner) => {
+    const segments = inner.split(/^===$/m);
+    // First segment is metadata (id: ...) — skip it; remainder are columns
+    const cols = segments.slice(1).map((seg) => marked.parse(seg.trim()));
+    if (cols.length === 0) return '';
+    const colHtml = cols.map((c) => `<div class="md-col">${c}</div>`).join('');
+    return `<div class="md-columns">${colHtml}</div>`;
+  });
 }
 
 // Configure marked — GitHub-flavored, safe defaults
@@ -131,8 +147,9 @@ function main() {
     const excerpt = meta.excerpt || '';
     const tags = Array.isArray(meta.tags) ? meta.tags : [];
 
-    const cleaned = cleanObsidianSyntax(body);
-    const html = marked.parse(cleaned);
+    const cleaned = cleanObsidianSyntax(body, meta.imageDir || '');
+    const preprocessed = preprocessObsidianColumns(cleaned);
+    const html = marked.parse(preprocessed);
 
     posts.push({
       title,
@@ -154,6 +171,14 @@ function main() {
 
   console.log(`[build-posts] wrote ${posts.length} post(s) → public/posts.json`);
   for (const p of posts) console.log(`  · ${p.dateDisplay || '—'}  ${p.title}  (${p.slug})`);
+
+  // Copy post images to public/images/ so Vite serves them
+  const IMAGES_SRC = join(ROOT, 'posts', 'images');
+  const IMAGES_DEST = join(OUT_DIR, 'images');
+  if (existsSync(IMAGES_SRC)) {
+    cpSync(IMAGES_SRC, IMAGES_DEST, { recursive: true, force: true });
+    console.log('[build-posts] copied posts/images/ → public/images/');
+  }
 }
 
 main();

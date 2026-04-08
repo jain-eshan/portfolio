@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Building Cashless physiotherapy.md",
+                "file": "non-technical-founders-ai.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Building Cashless physiotherapy"
+              "title": "non-technical-founders-ai"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Building Cashless physiotherapy.md",
+                "file": "non-technical-founders-ai.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Building Cashless physiotherapy"
+              "title": "Outline of non-technical-founders-ai"
             }
           },
           {
@@ -195,11 +195,12 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "22ae6a5bcefc98bb",
+  "active": "77f44dd148424c5c",
   "lastOpenFiles": [
-    "shipping-v2-portfolio.md",
-    "Building Cashless physiotherapy.md",
+    "welcome-to-my-writing.md",
     "Building Smart Health Reports.md",
+    "Building Cashless physiotherapy.md",
+    "shipping-v2-portfolio.md",
     "Pasted image 20260406173855.png",
     "images/cashless-physio/Dashboards.png",
     "images/cashless-physio/Figma Designs.png",
@@ -215,7 +216,6 @@
     "images/cashless-physio",
     "images",
     "non-technical-founders-ai.md",
-    "welcome-to-my-writing.md",
     "Welcome.md",
     "Test Formatter.md"
   ]

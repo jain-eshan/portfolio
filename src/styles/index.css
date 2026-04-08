@@ -1373,6 +1373,16 @@ a.project-row__visit:hover { background: var(--dark); color: var(--bg); }
   margin: 2em 0;
 }
 
+/* Obsidian columns */
+.md-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 1.4em 0;
+}
+.md-columns .md-col > *:first-child { margin-top: 0; }
+@media (max-width: 720px) { .md-columns { grid-template-columns: 1fr; } }
+
 body.has-drawer-open { overflow: hidden; }
 
 @media (max-width: 720px) {
