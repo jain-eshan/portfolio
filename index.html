@@ -60,7 +60,7 @@
   <div class="top-info">
     <a href="/" class="top-info__home">
       <p class="top-info__line"><span id="location">DELHI</span> <span id="clock">—</span> · <span id="date">—</span></p>
-      <p class="top-info__line">28°C <span class="top-info__icon">☀︎</span></p>
+      <p class="top-info__line" id="weather">—°C <span class="top-info__icon">—</span></p>
     </a>
     <button class="top-info__reset" id="reset-layout" title="Reset draggable positions" aria-label="Reset layout">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
@@ -70,17 +70,17 @@
 
   <!-- Top-right: Nav + Collaboration toggle + Theme toggle -->
   <div class="top-controls">
-    <a href="/work" class="top-nav__link">Work</a>
-    <a href="/about" class="top-nav__link">About</a>
+    <a href="/work" class="top-nav__link">Labs</a>
+    <a href="/about" class="top-nav__link">Story</a>
     <a href="/blog" class="top-nav__link">Blog</a>
-    <button class="top-badge" id="collab-toggle" aria-pressed="false" aria-label="Toggle collaboration mode">
+    <button class="top-badge" id="collab-toggle" aria-pressed="true" aria-label="Toggle collaboration mode">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      <span class="top-badge__label">Collaboration off</span>
+      <span class="top-badge__label">Collaboration on</span>
     </button>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    <!-- <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
       <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
       <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-    </button>
+    </button> -->
   </div>
 
   <!-- Right side: Links trigger -->
@@ -160,7 +160,7 @@
             <h1 class="hero__name hero__name--line2" data-drag data-drag-id="word-jain" data-drag-label="Text" aria-label="Jain">JAIN</h1>
           </div>
           <div class="hero__bio">
-            <p>Product Manager, designer &amp; builder. 4+ years shipping products across health-tech, fintech, and early-stage startups. Co-founder at <em>Fitin Club</em>. Currently at <em>Visit Health</em>, incoming <em>ISB YLP</em>.</p>
+            <p>A 21yr old tinkering with AI, trying to create value out of interesting problems through product &amp; design. Current <em>ISB PGP Co'27</em>. Prev, shipping products across insurtech and health-tech across multiple early-stage startups.</p>
           </div>
         </div>
         <div class="hero__cta">
@@ -184,32 +184,37 @@
       </div>
       <div class="section__body">
         <div class="section__intro">
-          <p>I think like a product person, <strong>work like a designer.</strong> 4+ years shipping digital products across health-tech, fintech, and early-stage ventures. <strong>My sweet spot:</strong> turning fuzzy problems into clear plans and experiences people actually enjoy.</p>
+          <p>I believe there is nothing unsolvable if you throw in enough hours and minds into it. I'm on a quest to find problems with impact at scale and have come across interesting people along the way. <strong>My sweet spot:</strong> turning fuzzy problems into clear plans and experiences people actually enjoy.</p>
         </div>
         <div class="section__content">
           <ul class="role-list">
+            <li class="role-row" data-reveal>
+              <a class="role-row__company" href="https://www.isb.edu" target="_blank" rel="noopener">Indian School of Business <span class="arrow">↗</span></a>
+              <span class="role-row__title">MBA · PGP</span>
+              <span class="role-row__date">2026–</span>
+            </li>
             <li class="role-row" data-reveal>
               <a class="role-row__company" href="https://fitin.club" target="_blank" rel="noopener">Fitin Club <span class="arrow">↗</span></a>
               <span class="role-row__title">Co-founder</span>
               <span class="role-row__date">2025–Now</span>
             </li>
             <li class="role-row" data-reveal>
-              <a class="role-row__company" href="https://previsit.com" target="_blank" rel="noopener">Visit Health <span class="arrow">↗</span></a>
-              <span class="role-row__title">Product Manager</span>
-              <span class="role-row__date">2024–Now</span>
+              <a class="role-row__company" href="https://getvisitapp.com" target="_blank" rel="noopener">Visit Health <span class="arrow">↗</span></a>
+              <span class="role-row__title">Associate Product Manager</span>
+              <span class="role-row__date">2024–2026</span>
             </li>
             <li class="role-row" data-reveal>
-              <span class="role-row__company">Favcy Venture Builders</span>
-              <span class="role-row__title">Product Associate</span>
-              <span class="role-row__date">2023–2024</span>
+              <a class="role-row__company" href="https://mergedeck.com" target="_blank" rel="noopener">Mergedeck <span class="arrow">↗</span></a>
+              <span class="role-row__title">Co-founder</span>
+              <span class="role-row__date">2023–2025</span>
             </li>
             <li class="role-row" data-reveal>
-              <a class="role-row__company" href="https://nestbysggscc.framer.website/" target="_blank" rel="noopener">Nest Incubator <span class="arrow">↗</span></a>
-              <span class="role-row__title">Founder &amp; President</span>
+              <a class="role-row__company" href="https://ciia-nestbysggscc.com/" target="_blank" rel="noopener">Nest Startup Incubator <span class="arrow">↗</span></a>
+              <span class="role-row__title">Founding President</span>
               <span class="role-row__date">2022–2024</span>
             </li>
             <li class="role-row" data-reveal>
-              <span class="role-row__company">University of Delhi</span>
+              <a class="role-row__company" href="https://www.du.ac.in/" target="_blank" rel="noopener">Delhi University · SGGSCC <span class="arrow">↗</span></a>
               <span class="role-row__title">B.Com (Hons)</span>
               <span class="role-row__date">2021–2024</span>
             </li>
@@ -302,12 +307,17 @@
             <li class="project-row" data-reveal>
               <span class="project-row__name">Nest Incubator</span>
               <span class="project-row__desc">A student-led startup incubator. 10+ ventures, 2.5+ years running.</span>
-              <a href="https://nestbysggscc.framer.website/" target="_blank" rel="noopener" class="project-row__visit">Visit <span class="arrow">↗</span></a>
+              <a href="https://ciia-nestbysggscc.com/" target="_blank" rel="noopener" class="project-row__visit">Visit <span class="arrow">↗</span></a>
             </li>
             <li class="project-row" data-reveal>
-              <span class="project-row__name">Habit Cohort</span>
-              <span class="project-row__desc">15-minute guided workout programs. ₹1,000 · 50+ members.</span>
-              <a href="https://fitin.club" target="_blank" rel="noopener" class="project-row__visit">Visit <span class="arrow">↗</span></a>
+              <span class="project-row__name">Cashless Physiotherapy</span>
+              <span class="project-row__desc">Get physio sessions covered within your OPD insurance cashlessly. Built at Visit Health.</span>
+              <a href="/blog#post=building-cashless-physiotherapy" class="project-row__visit">Read <span class="arrow">↗</span></a>
+            </li>
+            <li class="project-row" data-reveal>
+              <span class="project-row__name">Smart Health Reports</span>
+              <span class="project-row__desc">Understand your lab reports better. AI-powered, built in the Gemini 1.5 era.</span>
+              <span class="project-row__visit">Visit Health</span>
             </li>
           </ul>
         </div>

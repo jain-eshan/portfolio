@@ -1740,3 +1740,251 @@ body.has-drawer-open { overflow: hidden; }
   .toolkit-section { padding: 60px 7vw; }
   .toolkit-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
 }
+
+/* ============================================================
+   Story page — timeline + photo wall
+   ============================================================ */
+.story-page { padding-top: 64px; }
+
+.story-hero {
+  padding: 80px 6vw 60px;
+  max-width: 860px;
+}
+.story-hero__eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.story-hero__title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.story-hero__title em { font-style: italic; }
+.story-hero__lede {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 520px;
+}
+
+.story-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 60px;
+  padding: 0 6vw 80px;
+  align-items: start;
+}
+
+/* Timeline */
+.story-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.story-timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 12px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.timeline-entry {
+  display: grid;
+  grid-template-columns: 16px 72px 1fr;
+  gap: 0 16px;
+  padding-bottom: 44px;
+  position: relative;
+}
+.timeline-entry:last-child { padding-bottom: 0; }
+.timeline-entry__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--text-muted);
+  background: var(--bg);
+  margin-top: 4px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.timeline-entry__year {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding-top: 2px;
+  white-space: nowrap;
+}
+.timeline-entry__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.timeline-entry__title a { color: inherit; text-decoration: none; }
+.timeline-entry__title a:hover { text-decoration: underline; }
+.timeline-entry__role {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.timeline-entry__desc {
+  font-size: 14px;
+  color: var(--text-subtle);
+  line-height: 1.6;
+}
+
+/* Photo wall */
+.story-photos {
+  position: sticky;
+  top: 84px;
+}
+.story-photos__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 140px;
+  gap: 8px;
+}
+.story-photo { position: relative; border-radius: 8px; overflow: hidden; }
+.story-photo--tall { grid-row: span 2; }
+.story-photo--wide { grid-column: span 2; }
+.story-photo__placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--section-bg);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  min-height: 130px;
+}
+.story-photo__placeholder span {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.story-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.story-photo__caption {
+  position: absolute;
+  bottom: 6px;
+  left: 8px;
+  font-size: 10px;
+  color: var(--text-muted);
+  background: var(--bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .story-layout { grid-template-columns: 1fr; gap: 48px; padding: 0 7vw 60px; }
+  .story-photos { position: static; }
+  .story-hero { padding: 60px 7vw 40px; }
+}
+
+/* ============================================================
+   Work page hero eyebrow
+   ============================================================ */
+.page-hero__eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* ============================================================
+   Compact case studies
+   ============================================================ */
+.case-studies {
+  padding: 0 6vw;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.case-study {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  padding: 36px 0;
+  border-top: 1px solid var(--border);
+}
+.case-study:first-child { border-top: none; }
+.case-study__img {
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  background: var(--section-bg);
+  flex-shrink: 0;
+}
+.case-study__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.case-study__content { display: flex; flex-direction: column; gap: 10px; }
+.case-study__name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+.case-study__oneliner {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.case-study__role {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.case-study__pill {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 2px 10px;
+}
+.case-study__body { font-size: 13px; color: var(--text-subtle); line-height: 1.6; }
+.case-study__body h2 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 12px 0 4px; }
+.case-study__body h2:first-child { margin-top: 0; }
+.case-study__body p { margin-bottom: 6px; }
+.case-study__body ul { padding-left: 16px; margin-bottom: 6px; }
+.case-study__body li { margin-bottom: 3px; }
+.case-study__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 5px 14px;
+  margin-top: 4px;
+  width: fit-content;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.case-study__link:hover { border-color: var(--text-subtle); background: var(--section-bg); }
+
+@media (max-width: 720px) {
+  .case-study { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }
+  .case-study__img { aspect-ratio: 16/9; }
+}

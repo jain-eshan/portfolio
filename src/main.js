@@ -42,7 +42,7 @@ if (canDrag) {
 }
 
 /* ============================================================
-   Collaboration toggle — default OFF, persists for session
+   Collaboration toggle — default ON, persists for session
    ============================================================ */
 const COLLAB_KEY = 'ej.collab.v1';
 const collabBtn = document.getElementById('collab-toggle');
@@ -55,13 +55,35 @@ function setCollab(on) {
   try { sessionStorage.setItem(COLLAB_KEY, on ? '1' : '0'); } catch {}
 }
 
-// Restore from session (default OFF if nothing stored)
+// Restore from session (default ON if nothing stored)
 try {
   const stored = sessionStorage.getItem(COLLAB_KEY);
-  setCollab(stored === '1');
+  setCollab(stored !== '0');
 } catch {
-  setCollab(false);
+  setCollab(true);
 }
+
+/* ============================================================
+   Live weather — Delhi via Open-Meteo (no API key)
+   ============================================================ */
+(async () => {
+  const el = document.getElementById('weather');
+  if (!el) return;
+  try {
+    const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=28.6139&longitude=77.2090&current=temperature_2m,weathercode');
+    const data = await res.json();
+    const temp = Math.round(data.current.temperature_2m);
+    const code = data.current.weathercode;
+    let icon = '☀︎';
+    if (code >= 95) icon = '⛈';
+    else if (code >= 71) icon = '🌨';
+    else if (code >= 51) icon = '🌧';
+    else if (code >= 45) icon = '🌫';
+    else if (code >= 3) icon = '☁';
+    else if (code >= 1) icon = '🌤';
+    el.innerHTML = `${temp}°C <span class="top-info__icon">${icon}</span>`;
+  } catch {}
+})();
 
 if (collabBtn && canDrag) {
   collabBtn.addEventListener('click', () => {

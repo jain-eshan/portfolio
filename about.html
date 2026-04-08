@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="description" content="About Eshan Jain — Product Manager, designer, and builder. The story behind the work." />
+  <meta name="description" content="The story of Eshan Jain — Product Manager, designer, and builder." />
   <meta name="author" content="Eshan Jain" />
   <meta name="theme-color" content="#f5f5f4" />
-  <meta property="og:title" content="About | Eshan Jain" />
-  <meta property="og:description" content="The story behind the work." />
+  <meta property="og:title" content="Story | Eshan Jain" />
+  <meta property="og:description" content="The human behind the PM." />
   <meta property="og:url" content="https://eshanjain.in/about" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✳️%3C/text%3E%3C/svg%3E" />
-  <title>About | Eshan Jain</title>
+  <title>Story | Eshan Jain</title>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FPRZBKJ0VP"></script>
@@ -32,86 +32,131 @@
     <a href="/" class="page-header__name">Eshan Jain</a>
     <p class="page-header__center">Delhi · <span id="clock">—</span></p>
     <nav class="page-header__nav">
-      <a href="/work" class="page-header__link">Work</a>
-      <a href="/about" class="page-header__link is-active">About</a>
+      <a href="/work" class="page-header__link">Labs</a>
+      <a href="/about" class="page-header__link is-active">Story</a>
       <a href="/blog" class="page-header__link">Blog</a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+      <!-- <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
         <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
         <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      </button>
+      </button> -->
     </nav>
   </header>
 
-  <!-- FigJam dot-grid background -->
-  <div class="canvas-dots" aria-hidden="true"></div>
-  <div class="canvas-vignette" aria-hidden="true"></div>
+  <main class="story-page">
 
-  <main>
-    <div class="page-hero">
-      <h1 class="page-hero__title"><strong>About</strong></h1>
-      <p class="page-hero__subtitle">Product Manager, designer, and builder. I think in systems, build with taste, and ship with urgency.</p>
-    </div>
+    <!-- Hero -->
+    <header class="story-hero">
+      <p class="story-hero__eyebrow">Story</p>
+      <h1 class="story-hero__title">The human<br/><em>behind the PM.</em></h1>
+      <p class="story-hero__lede">Product person by training, builder by obsession, over-thinker by nature. Here's how I got here.</p>
+    </header>
 
-    <!-- Story: text left, photos right -->
-    <div class="about-story">
-      <div class="about-story__text">
-        <p>I've spent the last 4+ years learning how to turn fuzzy problems into products people actually use. That journey started at <strong>University of Delhi</strong>, where I studied commerce but spent most of my time building — founding a startup incubator, running cohorts, and figuring out what makes products stick.</p>
+    <!-- Timeline + Photo Wall -->
+    <div class="story-layout">
 
-        <p>Today I'm a <strong>Product Manager at Visit Health</strong>, leading pods across cashless physiotherapy, pre-policy medical checkups, and medical underwriting. Before that, I was a Product Associate at <strong>Favcy Venture Builders</strong>, working across early-stage portfolio companies.</p>
+      <!-- LEFT: Timeline -->
+      <div class="story-timeline">
 
-        <p>On the side, I co-founded <strong>Fitin Club</strong> — a lifestyle brand that makes fitness and nutrition approachable. We've run paid cohorts, built recommendation engines, and been featured in Nikhil Kamath's WTF Fund.</p>
-
-        <p>I'm incoming at <strong>ISB's Young Leaders Program</strong> (Class of 2027) and deeply curious about the intersection of product thinking and AI-assisted building. This entire portfolio was built without writing a single line of code manually — it's all <strong>vibe coded</strong> with Claude.</p>
-      </div>
-      <div class="about-story__photos">
-        <!-- Eshan will add photos here -->
-        <div class="about-story__photo" data-reveal>Photos coming soon</div>
-        <div class="about-story__photo" data-reveal>Photos coming soon</div>
-      </div>
-    </div>
-
-    <!-- Core Competencies (horizontal rows) -->
-    <section class="competencies" id="competencies">
-      <h2 class="competencies__title">Core <strong>Competencies</strong></h2>
-      <div class="competencies__list">
-        <div class="competency-row" data-reveal>
-          <div class="competency-row__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+        <div class="timeline-entry" data-reveal>
+          <div class="timeline-entry__dot"></div>
+          <div class="timeline-entry__year">2026 →</div>
+          <div class="timeline-entry__body">
+            <h3 class="timeline-entry__title"><a href="https://www.isb.edu" target="_blank" rel="noopener">Indian School of Business <span class="arrow">↗</span></a></h3>
+            <p class="timeline-entry__role">PGP · Co'27</p>
+            <p class="timeline-entry__desc">Heading to ISB to sharpen strategy, build my network, and stay close to people doing ambitious things.</p>
           </div>
-          <h3 class="competency-row__title">Product Strategy</h3>
-          <p class="competency-row__desc">Turning fuzzy inputs into clear product direction — discovery sprints, RICE frameworks, living roadmaps, and shippable increments that move metrics.</p>
         </div>
-        <div class="competency-row" data-reveal>
-          <div class="competency-row__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
-          </div>
-          <h3 class="competency-row__title">Design &amp; UX</h3>
-          <p class="competency-row__desc">Crafting simple flows and crisp UI that balance usability, accessibility, and visual polish. Figma is my second home.</p>
-        </div>
-        <div class="competency-row" data-reveal>
-          <div class="competency-row__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
-          <h3 class="competency-row__title">Vibe Coding</h3>
-          <p class="competency-row__desc">AI-assisted building to explore, validate, and iterate at speed without sacrificing taste. Claude, Lovable, Cursor — whatever ships fastest.</p>
-        </div>
-        <div class="competency-row" data-reveal>
-          <div class="competency-row__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          </div>
-          <h3 class="competency-row__title">Growth &amp; Ops</h3>
-          <p class="competency-row__desc">Running experiments, building funnels, and getting things to market — from landing pages to paying users. Data-informed, not data-paralyzed.</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- Toolkit (real logos) -->
+        <div class="timeline-entry" data-reveal>
+          <div class="timeline-entry__dot"></div>
+          <div class="timeline-entry__year">2025 –</div>
+          <div class="timeline-entry__body">
+            <h3 class="timeline-entry__title"><a href="https://fitin.club" target="_blank" rel="noopener">Fitin Club <span class="arrow">↗</span></a></h3>
+            <p class="timeline-entry__role">Co-founder</p>
+            <p class="timeline-entry__desc">Building a lifestyle brand that makes fitness and nutrition actually stick. Paid cohorts, recommendation engines, WTF Fund feature. Still very much alive.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry" data-reveal>
+          <div class="timeline-entry__dot"></div>
+          <div class="timeline-entry__year">2024 –</div>
+          <div class="timeline-entry__body">
+            <h3 class="timeline-entry__title"><a href="https://getvisitapp.com" target="_blank" rel="noopener">Visit Health <span class="arrow">↗</span></a></h3>
+            <p class="timeline-entry__role">Associate Product Manager · 2024–2026</p>
+            <p class="timeline-entry__desc">Led pods across cashless physiotherapy, pre-policy medical checkups, and smart health reports. Moved fast, shipped real products used by real patients.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry" data-reveal>
+          <div class="timeline-entry__dot"></div>
+          <div class="timeline-entry__year">2023 –</div>
+          <div class="timeline-entry__body">
+            <h3 class="timeline-entry__title"><a href="https://mergedeck.com" target="_blank" rel="noopener">Mergedeck <span class="arrow">↗</span></a></h3>
+            <p class="timeline-entry__role">Co-founder · 2023–2025</p>
+            <p class="timeline-entry__desc">Built tools for early-stage fundraising. Learned how to ship under pressure, manage ambiguity, and kill features that don't serve users.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry" data-reveal>
+          <div class="timeline-entry__dot"></div>
+          <div class="timeline-entry__year">2022 –</div>
+          <div class="timeline-entry__body">
+            <h3 class="timeline-entry__title"><a href="https://ciia-nestbysggscc.com/" target="_blank" rel="noopener">Nest Startup Incubator <span class="arrow">↗</span></a></h3>
+            <p class="timeline-entry__role">Founding President · 2022–2024</p>
+            <p class="timeline-entry__desc">Started from zero. Built a student-led incubator that mentored 10+ ventures. First real taste of what it means to build something from scratch and make it run.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry" data-reveal>
+          <div class="timeline-entry__dot"></div>
+          <div class="timeline-entry__year">2021 –</div>
+          <div class="timeline-entry__body">
+            <h3 class="timeline-entry__title">University of Delhi · SGGSCC</h3>
+            <p class="timeline-entry__role">B.Com (Hons) · 2021–2024</p>
+            <p class="timeline-entry__desc">Studied commerce, spent most of my time building things instead. That tension — between what's being taught and what I actually want to do — shaped everything that followed.</p>
+          </div>
+        </div>
+
+      </div><!-- /story-timeline -->
+
+      <!-- RIGHT: Photo wall -->
+      <div class="story-photos">
+        <div class="story-photos__grid">
+          <div class="story-photo story-photo--tall" data-reveal>
+            <div class="story-photo__placeholder">
+              <span>Add photo here</span>
+            </div>
+            <p class="story-photo__caption">At Nest Incubator, 2023</p>
+          </div>
+          <div class="story-photo" data-reveal>
+            <div class="story-photo__placeholder">
+              <span>Add photo here</span>
+            </div>
+            <p class="story-photo__caption">Fitin cohort launch</p>
+          </div>
+          <div class="story-photo" data-reveal>
+            <div class="story-photo__placeholder">
+              <span>Add photo here</span>
+            </div>
+            <p class="story-photo__caption">Building in public, Delhi</p>
+          </div>
+          <div class="story-photo story-photo--wide" data-reveal>
+            <div class="story-photo__placeholder">
+              <span>Add photo here</span>
+            </div>
+            <p class="story-photo__caption">Visit Health team</p>
+          </div>
+        </div>
+      </div><!-- /story-photos -->
+
+    </div><!-- /story-layout -->
+
+    <!-- Toolkit -->
     <section class="toolkit-section">
       <div class="section__header">
         <span class="section__label">My Toolkit</span>
       </div>
       <div class="toolkit-grid">
-        <!-- Figma -->
         <div class="toolkit-card" data-reveal>
           <span class="toolkit-card__icon">
             <svg viewBox="0 0 38 57" fill="none">
@@ -125,7 +170,6 @@
           <span class="toolkit-card__name">Figma</span>
           <span class="toolkit-card__use">Design</span>
         </div>
-        <!-- Claude -->
         <div class="toolkit-card" data-reveal>
           <span class="toolkit-card__icon">
             <svg viewBox="0 0 24 24" fill="none">
@@ -136,7 +180,6 @@
           <span class="toolkit-card__name">Claude</span>
           <span class="toolkit-card__use">Development</span>
         </div>
-        <!-- Notion -->
         <div class="toolkit-card" data-reveal>
           <span class="toolkit-card__icon">
             <svg viewBox="0 0 24 24" fill="currentColor">
@@ -146,7 +189,6 @@
           <span class="toolkit-card__name">Notion</span>
           <span class="toolkit-card__use">Product Ops</span>
         </div>
-        <!-- Obsidian -->
         <div class="toolkit-card" data-reveal>
           <span class="toolkit-card__icon">
             <svg viewBox="0 0 24 24" fill="none">
@@ -157,7 +199,6 @@
           <span class="toolkit-card__name">Obsidian</span>
           <span class="toolkit-card__use">Writing</span>
         </div>
-        <!-- Vercel -->
         <div class="toolkit-card" data-reveal>
           <span class="toolkit-card__icon">
             <svg viewBox="0 0 24 24" fill="currentColor">
@@ -167,7 +208,6 @@
           <span class="toolkit-card__name">Vercel</span>
           <span class="toolkit-card__use">Deployment</span>
         </div>
-        <!-- Linear -->
         <div class="toolkit-card" data-reveal>
           <span class="toolkit-card__icon">
             <svg viewBox="0 0 24 24" fill="none">
@@ -177,7 +217,6 @@
           <span class="toolkit-card__name">Linear</span>
           <span class="toolkit-card__use">Project Mgmt</span>
         </div>
-        <!-- Lovable -->
         <div class="toolkit-card" data-reveal>
           <span class="toolkit-card__icon">
             <svg viewBox="0 0 24 24" fill="none">
@@ -187,7 +226,6 @@
           <span class="toolkit-card__name">Lovable</span>
           <span class="toolkit-card__use">Prototyping</span>
         </div>
-        <!-- ChatGPT -->
         <div class="toolkit-card" data-reveal>
           <span class="toolkit-card__icon">
             <svg viewBox="0 0 24 24" fill="none">
