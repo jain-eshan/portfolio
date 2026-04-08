@@ -176,12 +176,11 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 350.5,
-    "collapsed": true
+    "width": 350.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -196,11 +195,11 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "77f44dd148424c5c",
+  "active": "22ae6a5bcefc98bb",
   "lastOpenFiles": [
-    "Building Smart Health Reports.md",
-    "Building Cashless physiotherapy.md",
     "shipping-v2-portfolio.md",
+    "Building Cashless physiotherapy.md",
+    "Building Smart Health Reports.md",
     "Pasted image 20260406173855.png",
     "images/cashless-physio/Dashboards.png",
     "images/cashless-physio/Figma Designs.png",
