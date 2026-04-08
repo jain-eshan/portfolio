@@ -3,7 +3,7 @@ title: "Nest Incubator"
 slug: nest-incubator
 oneliner: "A student-led startup incubator. 10+ ventures, 2.5+ years running."
 role: [Founder, President, Strategy]
-image: /images/project-3.png
+image: /images/work/NESTroom.jpg
 link: https://nestbysggscc.framer.website/
 order: 3
 published: true

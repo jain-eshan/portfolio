@@ -3,7 +3,7 @@ title: "Fitin Club"
 slug: fitin-club
 oneliner: "A lifestyle brand making fitness & nutrition stick. Flexible, guided, judgment-free."
 role: [Co-founder, Product, Design, Growth]
-image: /images/project-1.png
+image: /images/work/FitinClub.png
 link: https://fitin.club
 order: 1
 published: true

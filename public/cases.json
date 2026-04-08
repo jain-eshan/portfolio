@@ -10,7 +10,7 @@
         "Design",
         "Growth"
       ],
-      "image": "/images/project-1.png",
+      "image": "/images/work/FitinClub.png",
       "link": "https://fitin.club",
       "order": 1,
       "html": "<h2>The Problem</h2>\n<p>Most fitness products intimidate beginners. They assume motivation, discipline, and gym access. We wanted to build something that meets people where they are — at home, in 15 minutes, without judgment.</p>\n<h2>What I Did</h2>\n<ul>\n<li>Designed and shipped the end-to-end product — from onboarding to workout delivery</li>\n<li>Built cohort-based programs (Habit Cohort) that drove 50+ paid members at ₹1,000 each</li>\n<li>Ran growth experiments across Instagram, WhatsApp, and referral loops</li>\n<li>Featured in Nikhil Kamath&#39;s WTF Fund for habit-building innovation</li>\n</ul>\n<h2>Results</h2>\n<p>50+ paying members, WTF Fund recognition, community-first growth model that sustains without paid ads.</p>\n"
@@ -24,7 +24,7 @@
         "Product",
         "Design"
       ],
-      "image": "/images/project-2.png",
+      "image": "/images/work/ReccosByFitin.png",
       "link": "https://reccos.fitin.club",
       "order": 2,
       "html": "<h2>The Problem</h2>\n<p>Our Fitin community kept asking &quot;which protein powder should I buy?&quot; and &quot;is this brand actually clean?&quot; — there was no curated, trusted source for healthy food recommendations tailored to Indian consumers.</p>\n<h2>What I Did</h2>\n<ul>\n<li>Built the entire product solo using Lovable (React + Vite + Supabase + shadcn/ui)</li>\n<li>Designed the curation flow, product cards, and filtering system</li>\n<li>Sourced and verified initial product catalog from the community</li>\n</ul>\n<h2>Results</h2>\n<p>Shipped in a weekend. Became the go-to recommendation engine for the Fitin community.</p>\n"
@@ -38,7 +38,7 @@
         "President",
         "Strategy"
       ],
-      "image": "/images/project-3.png",
+      "image": "/images/work/NESTroom.jpg",
       "link": "https://nestbysggscc.framer.website/",
       "order": 3,
       "html": "<h2>The Problem</h2>\n<p>Students at SGGSCC had ideas but no structured support to go from concept to prototype. No incubator existed at the college level to provide mentorship, resources, and accountability.</p>\n<h2>What I Did</h2>\n<ul>\n<li>Founded and led the incubator from scratch during my B.Com years</li>\n<li>Built a mentorship pipeline connecting students with industry professionals</li>\n<li>Designed the selection, cohort, and demo-day processes</li>\n<li>Incubated 10+ student ventures over 2.5 years</li>\n</ul>\n<h2>Results</h2>\n<p>10+ ventures incubated, sustainable operations model that continues after graduation, multiple ventures that went on to external funding.</p>\n"
@@ -52,11 +52,11 @@
         "Design",
         "Vibe Coded"
       ],
-      "image": "/images/project-4.png",
+      "image": "/images/work/smart report.png",
       "link": "",
       "order": 4,
       "html": "<h2>The Problem</h2>\n<p>Most PM portfolios are static and forgettable. I wanted something that demonstrates how I think — interactive, opinionated, and built with the same tools I advocate for.</p>\n<h2>What I Did</h2>\n<ul>\n<li>Designed the entire UX: collaboration mode, draggable elements, cursor tour, canvas-style layout</li>\n<li>Built with Claude Code — vanilla HTML/CSS/JS, no framework</li>\n<li>Integrated Obsidian-backed blog with auto-publish pipeline</li>\n<li>Dark mode, responsive, accessible — all shipped in days, not weeks</li>\n</ul>\n<h2>Results</h2>\n<p>Shipped v1 to v3 in under a week. Living proof that non-technical founders can build production-quality products with AI.</p>\n"
     }
   ],
-  "builtAt": "2026-04-08T17:30:23.845Z"
+  "builtAt": "2026-04-08T17:37:51.858Z"
 }

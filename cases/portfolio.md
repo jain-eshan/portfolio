@@ -3,7 +3,7 @@ title: "This Portfolio"
 slug: portfolio
 oneliner: "An interactive canvas-style portfolio built entirely with AI tools. No manual coding."
 role: [Product, Design, Vibe Coded]
-image: /images/project-4.png
+image: /images/work/smart report.png
 order: 4
 published: true
 ---

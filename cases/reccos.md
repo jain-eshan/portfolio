@@ -3,7 +3,7 @@ title: "Reccos by Fitin"
 slug: reccos
 oneliner: "Discover clean, high-quality food products. Built on Lovable in a weekend."
 role: [Solo Builder, Product, Design]
-image: /images/project-2.png
+image: /images/work/ReccosByFitin.png
 link: https://reccos.fitin.club
 order: 2
 published: true
