@@ -180,3 +180,29 @@ if (linksBackdrop) linksBackdrop.addEventListener('click', closeDrawer);
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeDrawer();
 });
+
+/* ============================================================
+   Music player — floating vinyl
+   ============================================================ */
+const musicBtn = document.getElementById('music-btn');
+const musicEmbed = document.getElementById('music-embed');
+const musicVinyl = document.getElementById('music-vinyl');
+const musicLabel = musicBtn?.querySelector('.music-player__label');
+let musicPlaying = false;
+
+if (musicBtn) {
+  musicBtn.addEventListener('click', () => {
+    musicPlaying = !musicPlaying;
+    if (musicPlaying) {
+      musicEmbed.hidden = false;
+      musicVinyl.classList.add('is-spinning');
+      if (musicLabel) musicLabel.textContent = '♫ Now playing';
+      document.getElementById('music-player').classList.add('is-open');
+    } else {
+      musicEmbed.hidden = true;
+      musicVinyl.classList.remove('is-spinning');
+      if (musicLabel) musicLabel.textContent = '♫ Play';
+      document.getElementById('music-player').classList.remove('is-open');
+    }
+  });
+}

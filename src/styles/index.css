@@ -718,41 +718,61 @@ a:hover .arrow { transform: translate(2px, -2px); opacity: 1; }
 .expertise-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
 }
 .expertise-card {
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 32px 28px;
-  transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease), filter 0.3s var(--ease);
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  background: var(--bg);
+  padding: 48px 36px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: background 0.2s var(--ease);
   will-change: transform;
+  cursor: default;
 }
-.expertise-card:hover {
-  border-color: var(--text-subtle);
-  box-shadow: 0 24px 48px -24px rgba(15, 23, 42, 0.2);
+.expertise-card::before,
+.expertise-card::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid var(--text-subtle);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
 }
+.expertise-card::before { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+.expertise-card::after  { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+.expertise-card:hover::before,
+.expertise-card:hover::after { opacity: 1; }
+.expertise-card:hover { background: var(--section-bg); }
 .expertise-card.is-dragging {
   filter: drop-shadow(0 24px 48px rgba(15, 23, 42, 0.25));
   z-index: 1000;
 }
 .expertise-card__icon {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   color: var(--text);
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 .expertise-card__icon svg { width: 100%; height: 100%; }
 .expertise-card h3 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
 }
 .expertise-card p {
   font-size: 13px;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.6;
+  max-width: 220px;
 }
 
 /* Project list */
@@ -1987,4 +2007,203 @@ body.has-drawer-open { overflow: hidden; }
 @media (max-width: 720px) {
   .case-study { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }
   .case-study__img { aspect-ratio: 16/9; }
+}
+
+/* ============================================================
+   Case cards — Andy Reff style (Labs page)
+   ============================================================ */
+.case-studies {
+  padding: 0 0 120px;
+}
+.case-card {
+  display: grid;
+  grid-template-columns: 42% 1fr;
+  min-height: 480px;
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+  transition: background 0.25s var(--ease);
+}
+.case-card:last-child { border-bottom: 1px solid var(--border); }
+.case-card:hover { background: var(--section-bg); }
+
+/* Left: text panel */
+.case-card__left {
+  padding: 56px 48px 56px 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--border);
+}
+.case-card__tags {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+.case-card__title {
+  font-size: clamp(26px, 3.2vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.case-card__desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.case-card__body {
+  font-size: 13px;
+  color: var(--text-subtle);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 32px;
+}
+.case-card__body h2 {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 16px 0 6px;
+}
+.case-card__body h2:first-child { margin-top: 0; }
+.case-card__body p { margin-bottom: 6px; }
+.case-card__body ul { padding-left: 16px; margin-bottom: 8px; }
+.case-card__body li { margin-bottom: 3px; }
+.case-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 1px;
+  width: fit-content;
+  transition: opacity 0.2s var(--ease);
+}
+.case-card__cta:hover { opacity: 0.5; }
+
+/* Right: image panel */
+.case-card__img {
+  position: relative;
+  overflow: hidden;
+  background: var(--section-bg);
+}
+.case-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+  transition: transform 0.6s var(--ease);
+}
+.case-card:hover .case-card__img img { transform: scale(1.02); }
+.case-card__img--empty {
+  background: linear-gradient(135deg, var(--section-bg) 0%, var(--border) 100%);
+}
+
+@media (max-width: 900px) {
+  .case-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .case-card__left {
+    padding: 40px 7vw;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .case-card__img { aspect-ratio: 16/9; }
+}
+
+/* ============================================================
+   Music player — floating vinyl button
+   ============================================================ */
+.music-player {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.music-player__btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 16px 6px 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+}
+.music-player__btn:hover {
+  border-color: #1DB954;
+  box-shadow: 0 4px 20px rgba(29,185,84,0.15);
+}
+.music-player.is-open .music-player__btn {
+  background: #111;
+  border-color: #1DB954;
+  color: #fff;
+}
+.music-player__vinyl {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.music-player__vinyl-svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+.music-player__vinyl.is-spinning .music-player__vinyl-svg {
+  animation: vinyl-spin 2s linear infinite;
+}
+@keyframes vinyl-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.music-player__label {
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+.music-player__embed {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  width: 304px;
+  animation: slide-up 0.2s var(--ease);
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.music-player__track {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  padding: 0 2px;
+  letter-spacing: 0.02em;
+}
+@media (max-width: 900px) {
+  .music-player { bottom: 20px; left: 16px; }
+  .music-player__embed { width: calc(100vw - 40px); }
 }

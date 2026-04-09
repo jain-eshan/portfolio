@@ -1,5 +1,6 @@
 /* ============================================================
    cases.js — Fetch + render case studies on /work page
+   Andy Reff-inspired: full card with border, text left / image right
    ============================================================ */
 
 let cached = null;
@@ -14,24 +15,24 @@ async function fetchCases() {
 }
 
 function renderCaseStudy(c) {
-  const pills = c.role.map(r => `<span class="case-study__pill">${r}</span>`).join('');
+  const tags = c.role.map(r => r.toUpperCase()).join(' · ');
   const linkHtml = c.link
-    ? `<a href="${c.link}" target="_blank" rel="noopener" class="case-study__link">Visit ${c.title} <span class="arrow">↗</span></a>`
+    ? `<a href="${c.link}" target="_blank" rel="noopener" class="case-card__cta">View project <span class="arrow">→</span></a>`
     : '';
   const imageHtml = c.image
-    ? `<div class="case-study__img"><img src="${c.image}" alt="${c.title} screenshot" loading="lazy" /></div>`
-    : '';
+    ? `<div class="case-card__img"><img src="${c.image}" alt="${c.title}" loading="lazy" /></div>`
+    : `<div class="case-card__img case-card__img--empty"></div>`;
 
   return `
-    <article class="case-study" id="${c.slug}" data-reveal>
-      ${imageHtml}
-      <div class="case-study__content">
-        <h2 class="case-study__name">${c.title}</h2>
-        <p class="case-study__oneliner">${c.oneliner}</p>
-        <div class="case-study__role">${pills}</div>
-        <div class="case-study__body">${c.html}</div>
+    <article class="case-card" id="${c.slug}" data-reveal>
+      <div class="case-card__left">
+        <p class="case-card__tags">${tags}</p>
+        <h2 class="case-card__title">${c.title}</h2>
+        <p class="case-card__desc">${c.oneliner}</p>
+        <div class="case-card__body">${c.html}</div>
         ${linkHtml}
       </div>
+      ${imageHtml}
     </article>
   `;
 }
@@ -50,7 +51,7 @@ export async function initCases() {
     container.innerHTML = cases.map(renderCaseStudy).join('');
     // Manually add visibility since these were injected after IntersectionObserver ran
     container.querySelectorAll('[data-reveal]').forEach((el, i) => {
-      setTimeout(() => el.classList.add('is-visible'), i * 100);
+      setTimeout(() => el.classList.add('is-visible'), i * 150);
     });
   } catch (err) {
     console.warn('[cases] Failed to load:', err);
