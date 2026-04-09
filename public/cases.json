@@ -58,5 +58,5 @@
       "html": "<h2>The Problem</h2>\n<p>Most PM portfolios are static and forgettable. I wanted something that demonstrates how I think — interactive, opinionated, and built with the same tools I advocate for.</p>\n<h2>What I Did</h2>\n<ul>\n<li>Designed the entire UX: collaboration mode, draggable elements, cursor tour, canvas-style layout</li>\n<li>Built with Claude Code — vanilla HTML/CSS/JS, no framework</li>\n<li>Integrated Obsidian-backed blog with auto-publish pipeline</li>\n<li>Dark mode, responsive, accessible — all shipped in days, not weeks</li>\n</ul>\n<h2>Results</h2>\n<p>Shipped v1 to v3 in under a week. Living proof that non-technical founders can build production-quality products with AI.</p>\n"
     }
   ],
-  "builtAt": "2026-04-09T03:09:15.968Z"
+  "builtAt": "2026-04-09T03:30:58.629Z"
 }

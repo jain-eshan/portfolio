@@ -718,55 +718,43 @@ a:hover .arrow { transform: translate(2px, -2px); opacity: 1; }
 .expertise-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  overflow: hidden;
+  gap: 40px 60px;
 }
 .expertise-card {
-  background: var(--bg);
-  padding: 48px 36px 40px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   position: relative;
-  transition: background 0.2s var(--ease);
   will-change: transform;
   cursor: default;
 }
-.expertise-card::before,
-.expertise-card::after {
+/* Dashed selection border — FigJam drag-select style */
+.expertise-card::before {
   content: '';
   position: absolute;
-  width: 7px;
-  height: 7px;
-  border: 1.5px solid var(--text-subtle);
-  opacity: 0;
-  transition: opacity 0.2s var(--ease);
+  inset: -12px;
+  border: 1.5px dashed var(--border);
+  border-radius: 2px;
+  pointer-events: none;
 }
-.expertise-card::before { top: 8px; left: 8px; border-right: none; border-bottom: none; }
-.expertise-card::after  { bottom: 8px; right: 8px; border-left: none; border-top: none; }
-.expertise-card:hover::before,
-.expertise-card:hover::after { opacity: 1; }
-.expertise-card:hover { background: var(--section-bg); }
 .expertise-card.is-dragging {
   filter: drop-shadow(0 24px 48px rgba(15, 23, 42, 0.25));
   z-index: 1000;
 }
 .expertise-card__icon {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   color: var(--text);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 .expertise-card__icon svg { width: 100%; height: 100%; }
 .expertise-card h3 {
   font-size: 15px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .expertise-card p {
   font-size: 13px;
