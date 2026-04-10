@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "non-technical-founders-ai.md",
+                "file": "Building Cashless physiotherapy.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "non-technical-founders-ai"
+              "title": "Building Cashless physiotherapy"
             }
           }
         ]
@@ -180,8 +180,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 350.5,
-    "collapsed": true
+    "width": 350.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,6 +197,8 @@
   },
   "active": "77f44dd148424c5c",
   "lastOpenFiles": [
+    "Building Smart Health Reports.md",
+    "non-technical-founders-ai.md",
     "images/Figma-Homepage.png",
     "images/Figma Designs.png",
     "images/Dashboards.png",
@@ -207,17 +208,14 @@
     "images/22-01-26 Live Slack Message.png",
     "images/21-11-25 Feedback.png",
     "welcome-to-my-writing.md",
-    "Building Smart Health Reports.md",
     "Building Cashless physiotherapy.md",
     "shipping-v2-portfolio.md",
     "Pasted image 20260406173855.png",
     "images/cashless-physio/Dashboards.png",
-    "images/cashless-physio/Figma Designs.png",
     "images/cashless-physio/slack-prd-kickoff.png.md",
     "Design requirements, FE changes, and backend specs being tracked in parallel — the backlog grew faster than we could ship..md",
     "images/cashless-physio",
     "images",
-    "non-technical-founders-ai.md",
     "Welcome.md",
     "Test Formatter.md"
   ]
