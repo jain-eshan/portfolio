@@ -50,14 +50,26 @@ function parseFrontmatter(raw) {
 }
 
 // Obsidian quirks: strip wikilinks [[...]] → plain text (or convert to <a> if it's a URL)
+// Default image base is /images/posts/ — images live in posts/images/ flat folder.
+// Always emits <img> directly (not ![]()) so filenames with spaces don't break marked.
 function cleanObsidianSyntax(md, imageDir = '') {
-  const imgBase = imageDir ? `/images/${imageDir}/` : './assets/';
+  const imgBase = imageDir ? `/images/${imageDir}/` : '/images/posts/';
+  const src = (file) => {
+    if (file.startsWith('http')) return file;
+    // URL-encode filename component only (preserves slashes in subpaths if any)
+    const parts = file.split('/');
+    parts[parts.length - 1] = encodeURIComponent(parts[parts.length - 1]);
+    return imgBase + parts.join('/');
+  };
   return md
     // ![[image.png|350]] → <img src="..." width="350" />
     .replace(/!\[\[([^\]|]+)\|(\d+)\]\]/g, (_, file, width) =>
-      `<img src="${imgBase}${file}" width="${width}" loading="lazy" />`)
-    // ![[image.png]] → ![](path/image.png)
-    .replace(/!\[\[([^\]]+)\]\]/g, (_, p) => `![](${p.startsWith('http') ? p : imgBase + p})`)
+      `<img src="${src(file.trim())}" width="${width}" loading="lazy" />`)
+    // ![[image.png]] → <img src="..." /> (emit directly, not ![](), to avoid space issues)
+    .replace(/!\[\[([^\]]+)\]\]/g, (_, file) =>
+      file.startsWith('http')
+        ? `<img src="${file}" loading="lazy" />`
+        : `<img src="${src(file.trim())}" loading="lazy" />`)
     // [[wikilink]] → wikilink (plain text, not followable)
     .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, link, alias) => alias || link);
 }
@@ -172,12 +184,12 @@ function main() {
   console.log(`[build-posts] wrote ${posts.length} post(s) → public/posts.json`);
   for (const p of posts) console.log(`  · ${p.dateDisplay || '—'}  ${p.title}  (${p.slug})`);
 
-  // Copy post images to public/images/ so Vite serves them
+  // Copy post images to public/images/posts/ so Vite serves them at /images/posts/*
   const IMAGES_SRC = join(ROOT, 'posts', 'images');
-  const IMAGES_DEST = join(OUT_DIR, 'images');
+  const IMAGES_DEST = join(OUT_DIR, 'images', 'posts');
   if (existsSync(IMAGES_SRC)) {
     cpSync(IMAGES_SRC, IMAGES_DEST, { recursive: true, force: true });
-    console.log('[build-posts] copied posts/images/ → public/images/');
+    console.log('[build-posts] copied posts/images/ → public/images/posts/');
   }
 }
 
