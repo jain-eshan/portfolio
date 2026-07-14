@@ -1,0 +1,32 @@
+# Eshan Jain
+
+> Product Manager, designer & builder based in Delhi. Co-founder at Fitin Club, Product Manager at Visit Health, incoming ISB Young Leaders Program (2027).
+
+## About
+- 4+ years shipping digital products across health-tech, fintech, and early-stage startups.
+- Blends product strategy, design & UX, AI-assisted ("vibe coding") development, and growth/ops.
+- Currently: Product Manager at Visit Health, Co-founder at Fitin Club, incoming ISB YLP Class of 2027.
+
+## Experience
+- Fitin Club - Co-founder, 2025-Now: https://fitin.club
+- Visit Health - Product Manager, 2024-Now
+- Favcy Venture Builders - Product Associate, 2023-2024
+- Nest Incubator - Founder & President, 2022-2024: https://nestbysggscc.framer.website/
+- University of Delhi - B.Com (Hons), 2021-2024
+
+## Projects
+- Fitin Club - lifestyle brand making fitness & nutrition stick: https://fitin.club
+- Reccos by Fitin - discover clean, high-quality food products, built on Lovable: https://reccos.fitin.club
+- Nest Incubator - student-led startup incubator, 10+ ventures over 2.5+ years: https://nestbysggscc.framer.website/
+- Habit Cohort - 15-minute guided workout program, Rs 1,000, 50+ members: https://fitin.club
+
+## Writings
+Short essays on product, design, and building with AI. Full, up-to-date list at https://eshanjain.in/blog (posts are Markdown files auto-published from Obsidian).
+
+## Contact
+- Email: workwitheshanjain@gmail.com
+- LinkedIn: https://www.linkedin.com/in/jain-eshan/
+- WhatsApp: https://wa.me/919868863129
+
+## Site
+Full site: https://eshanjain.in
