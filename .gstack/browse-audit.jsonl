@@ -1,0 +1,8 @@
+{"ts":"2026-07-14T12:16:07.447Z","cmd":"goto","args":"https://paxel.ycombinator.com/","origin":"https://paxel.ycombinator.com/","durationMs":2109,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-07-14T12:16:07.499Z","cmd":"text","args":"","origin":"https://paxel.ycombinator.com/","durationMs":3,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-07-14T12:16:16.690Z","cmd":"snapshot","args":"-i -d 3 -s body","origin":"https://paxel.ycombinator.com/","durationMs":25,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-07-14T12:16:24.000Z","cmd":"click","args":"@e8","origin":"https://paxel.ycombinator.com/","durationMs":69,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-07-14T12:16:24.042Z","cmd":"url","args":"","origin":"https://paxel.ycombinator.com/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-07-14T12:16:24.449Z","cmd":"screenshot","args":"/tmp/paxel-machine.png","origin":"https://paxel.ycombinator.com/","durationMs":368,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-07-14T12:16:24.491Z","cmd":"click","args":"@e7","origin":"https://paxel.ycombinator.com/","durationMs":1,"status":"error","hasCookies":false,"mode":"launched","error":"Ref @e7 (button \"[x] Human\") is stale — element no longer exists. Run 'snapshot' for fresh refs."}
+{"ts":"2026-07-14T12:16:24.786Z","cmd":"screenshot","args":"/tmp/paxel-human.png","origin":"https://paxel.ycombinator.com/","durationMs":255,"status":"ok","hasCookies":false,"mode":"launched"}
