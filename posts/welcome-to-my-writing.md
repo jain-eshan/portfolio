@@ -3,7 +3,8 @@ title: Welcome to my writing
 slug: welcome-to-my-writing
 date: 2026-04-05
 excerpt: A small corner of the internet where I'll think out loud about product, design, and the weird little ideas I can't stop chewing on.
-tags: [meta, intro]
+tags:
+  - intro
 published: true
 ---
 
