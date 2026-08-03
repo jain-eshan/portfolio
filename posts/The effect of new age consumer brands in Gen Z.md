@@ -1,3 +1,14 @@
+---
+title: The effect of new age consumer brands in Gen Z
+slug: effect-of-new-age-consumer-brands-in-GenZ
+date: 2026-03-28
+excerpt: Here's how I think new-age consumer brands are seeping into the psyche of Gen Z, and musings about my time here in Mohali.
+tags:
+  - building
+  - ai
+  - product
+published: true
+---
 It's been close to four weeks since I came to ISB to pursue my PGP degree. While ISB boasts of having the most diverse cohort out there in an MBA program, there are some things which I have noticed are common among most of the people over here (or at least most of those whom I have had a chance to interact with). This particular piece will talk about some of my observations about the cohort, how I think new-age consumer brands are seeping into the psyche of Gen Z, and musings about my time here in Mohali. 
 
 I am the youngest person in my cohort, coming in at 21, while the average age is somewhere around 25-26. The gender ratio is 45:55 between females and males. People are from backgrounds as diverse as MBBS doctors, engineers, designers, authors, fashion models, and much more. Based on all this, I can say safely say that the sample size is pretty good, considering there are 400 different people from all across India from all different backgrounds and demographics. Still I've noticed that some brand more often on campus:
