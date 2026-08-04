@@ -7,6 +7,7 @@ tags:
   - operations
 published: false
 ---
+
 I ordered a coffee from AB Coffee off my phone the other day, timed to land exactly when I'd walk in. No line, no standing around, cup ready. My first reaction was the one I think I was supposed to have: _this is just better._ My second reaction, a few minutes later, was the one that actually stuck: nothing about making that coffee got faster. The same machine, the same barista, the same forty-five seconds of extraction. So where did the wait go?
 
 It didn't go anywhere. It moved. It used to sit in a line, visible, mine, annoying. Now it sits somewhere between placing the order and walking in — except I don't experience it as waiting anymore, because I'm not standing still for it. AB Coffee didn't make the coffee faster. It made the same wait invisible, and then it charged me a subscription for the privilege of not seeing it.
