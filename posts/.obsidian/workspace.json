@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "0eee3701e756d88a",
+        "id": "c5b01db07d126c3f",
         "type": "tabs",
         "children": [
           {
-            "id": "f82f1eabe8ef8da9",
+            "id": "f37ec70d575be86e",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -195,7 +195,7 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "f82f1eabe8ef8da9",
+  "active": "f37ec70d575be86e",
   "lastOpenFiles": [
     "welcome-to-my-writing.md",
     "Nobody's Selling You Coffee.md",
