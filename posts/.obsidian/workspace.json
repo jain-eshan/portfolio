@@ -11,14 +11,14 @@
             "id": "f37ec70d575be86e",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "posts/What 20 Years of Going Organic Taught Me About Governance.md",
-                "bFile": "posts/What 20 Years of Going Organic Taught Me About Governance.md",
-                "aRef": ""
+                "file": "What 20 Years of Going Organic Taught Me About Governance.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: What 20 Years of Going Organic Taught Me About Governance  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "What 20 Years of Going Organic Taught Me About Governance"
             }
           }
         ]
@@ -182,7 +182,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 487.15234375
+    "width": 280.0234375
   },
   "left-ribbon": {
     "hiddenItems": {

@@ -9,8 +9,6 @@ tags:
   - tech
 published: true
 ---
-# What 20 Years of Going Organic Taught Me About Governance: Notes from Sikkim
-
 How often does a single week change your mind about how a government actually works?
 
 That's what happened when I traveled to Sikkim as part of ISB's SEED program - a rural immersion where you spend a week with a state's stakeholders, identify a real problem they're facing, and pitch a technology-driven solution directly to the government. This year, Prof. Chhatre and Prof. Vishal picked Sikkim. The context: over the last 20 years, Sikkim has turned its entire agricultural sector organic - a total ban on chemical fertilizers and pesticides, across the whole state.
