@@ -1,10 +1,12 @@
 ---
-title: What-20-Years-of-Going-Organic-Taught-Me-About-Governance
+title: What 20 Years of Going Organic Taught Me About Governance
 slug: What-20-Years-of-Going-Organic-Taught-Me-About-Governance
 date: 2026-08-04
-excerpt: A small corner of the internet where I'll think out loud about product, design, and the weird little ideas I can't stop chewing on.
+excerpt: "# What 20 Years of Going Organic Taught Me About Governance: Notes from Sikkim"
 tags:
-  - operations
+  - isb
+  - governance
+  - tech
 published: false
 ---
 # What 20 Years of Going Organic Taught Me About Governance: Notes from Sikkim
