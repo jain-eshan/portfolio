@@ -7,7 +7,7 @@ tags:
   - isb
   - governance
   - tech
-published: false
+published: true
 ---
 # What 20 Years of Going Organic Taught Me About Governance: Notes from Sikkim
 
