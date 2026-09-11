@@ -11,10 +11,14 @@
             "id": "6298a4817e79d391",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "non-technical-founders-ai.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "non-technical-founders-ai"
             }
           }
         ]
@@ -154,6 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "non-technical-founders-ai.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -182,7 +187,7 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "0f4250ab2c81cbff",
+  "active": "6b25110a80a82e3a",
   "lastOpenFiles": [
     "What 20 Years of Going Organic Taught Me About Governance.md",
     "Nobody's Selling You Coffee.md",
